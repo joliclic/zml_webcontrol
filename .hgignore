@@ -1,0 +1,21 @@
+syntax: regexp
+
+~$
+\.pyc$
+(^|/)TAGS$
+(^|/)\.DS_Store$
+
+\.komodoproject$
+^.komodotools
+
+composer.lock
+^node_modules
+^bower_components
+^vendor
+^phpunit.xml$
+^MY_TODO.txt$
+^MY_NOTES.txt$
+^my_notes.md$
+
+^dist/
+
