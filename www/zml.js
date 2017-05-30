@@ -64,6 +64,10 @@ function updateStatus() {
 }
 
 function init() {
+    var textarea = $('#responses-textarea');
+    if (textarea)
+        textarea.value = ''
+    
     updateStatus();
     
     var substatus_box = $('#substatus-box');
@@ -76,6 +80,14 @@ function init() {
         server.websocket = new WebSocket(server.url);
         server.websocket.addEventListener('open', function (evt) {
             updateStatus();
+        });
+        var sname = server.name;
+        server.websocket.addEventListener('message', function (evt) {
+            var textarea = $('#responses-textarea');
+            if (textarea) {
+                textarea.value =
+                    sname + ': ' + "\n" + evt.data + "\n\n" + textarea.value;
+            }
         });
     });
     
