@@ -3,7 +3,6 @@
 var gServers = [
     {
         name: 'PifLeChien',
-        //hostname: 'PifLeChien',
         //url: 'ws:/192.168.2.31:81',
         url: 'ws:/192.168.0.42:81',
         websocket: null,
@@ -103,9 +102,17 @@ function init() {
     
     $$('.cmd-bt').forEach(function(elt) {
         elt.addEventListener('click', function(evt) {
-            cmd = elt.getAttribute('data-cmd');
+            var cmd = this.getAttribute('data-cmd');
             if (cmd)
                 sendCommand(cmd);
+        });
+    });
+    
+    $$('.cmd-slider').forEach(function(elt) {
+        elt.addEventListener('change', function(evt) {
+            var cmd = this.getAttribute('data-cmd');
+            if (cmd)
+                sendCommand(cmd + this.value);
         });
     });
     
