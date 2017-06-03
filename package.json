@@ -1,0 +1,16 @@
+{
+  "name": "zml_webcontrol",
+  "version": "0.1.0",
+  "description": "Zygos Masks Lights Web Control",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nicolas MARTIN",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "fs-extra": "^3.0.1",
+    "less": "^2.7.2"
+  }
+}
