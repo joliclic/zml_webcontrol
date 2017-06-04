@@ -1,33 +1,26 @@
-
 .main-title {
-    text-align: center;
+  text-align: center;
 }
-
 #mutable-cmd-box {
-    margin: 1em auto 2em;
+  margin: 1em auto 2em;
 }
-
 #status-box {
-    text-align: right;
+  text-align: right;
 }
-
 .status-txt {
-    font-weight: bold;
-    padding: 0.5em 0.7em 0.7em 0.5em;
-    margin: 0.3em;
+  font-weight: bold;
+  padding: 0.5em 0.7em 0.7em 0.5em;
+  margin: 0.3em;
 }
-
 .status-ok {
-    background-color: #5CBF00;
-    color: #fff;
+  background-color: #5CBF00;
+  color: #fff;
 }
-
 .status-warning {
-    background-color: #ED5A00;
-    color: #000;
+  background-color: #ED5A00;
+  color: #000;
 }
-
 .status-alert {
-    background-color: #FF0707;
-    color: #000;
+  background-color: #FF0707;
+  color: #000;
 }
