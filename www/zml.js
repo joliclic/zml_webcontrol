@@ -36,12 +36,12 @@ function updateStatus() {
             nb_servers_ok++;
             if (server.status_box) {
                 server.status_box.innerHTML =
-                    server.name + ' :' +
+                    server.name + ' : ' +
                     '<span class="status-txt status-ok">OK</span>';
             }
         } else if (server.status_box) {
             server.status_box.innerHTML =
-                server.name + ' :' +
+                server.name + ' : ' +
                 '<span class="status-txt status-alert">KO</span>';
         }
     });
