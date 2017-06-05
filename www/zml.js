@@ -85,7 +85,8 @@ function init() {
             var textarea = $('#responses-textarea');
             if (textarea) {
                 textarea.value =
-                    sname + ': ' + "\n" + evt.data + "\n\n" + textarea.value;
+                    (sname + ': ' + "\n" + evt.data + "\n\n" + textarea.value).
+                    substr(0, 500);
             }
         });
     });
