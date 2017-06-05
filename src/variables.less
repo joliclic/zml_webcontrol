@@ -1,3 +1,13 @@
+@ledcolor-black:        #000;
+@ledcolor-white:        #ccc;
+@ledcolor-purple:       #a900ff; // rgb(169, 0, 255)
+@ledcolor-orange:       #ff8200; // rgb(255, 130, 0)
+@ledcolor-red:          #ff2a2a;
+@ledcolor-green:        #7bff2f;
+@ledcolor-blue:         #2f9dff;
+@ledcolor-yellow:       #ffff38;
+
+
 // Largely inspired by Bootstrap
 
 @gray-base:              #000;
@@ -105,8 +115,10 @@
 @btn-border-radius-large:        @border-radius-large;
 @btn-border-radius-small:        @border-radius-small;
 
-@input-bg:                       #fff;
-@input-bg-disabled:              @gray-lighter;
+//@input-bg:                       #fff;
+//@input-bg-disabled:              @gray-lighter;
+@input-bg:                       @gray-lighter;
+@input-bg-disabled:              @gray-light;
 
 @input-color:                    @gray;
 @input-border:                   #f1f1f1;
@@ -152,6 +164,30 @@
 @screen-xs-max:              (@screen-sm-min - 1);
 @screen-sm-max:              (@screen-md-min - 1);
 @screen-md-max:              (@screen-lg-min - 1);
+
+@grid-columns:              12;
+//** Padding between columns. Gets divided in half for the left and right.
+@grid-gutter-width:         30px;
+// Navbar collapse
+//** Point at which the navbar becomes uncollapsed.
+@grid-float-breakpoint:     @screen-sm-min;
+//** Point at which the navbar begins collapsing.
+@grid-float-breakpoint-max: (@grid-float-breakpoint - 1);
+
+// Small screen / tablet
+@container-tablet:             (720px + @grid-gutter-width);
+//** For `@screen-sm-min` and up.
+@container-sm:                 @container-tablet;
+
+// Medium screen / desktop
+@container-desktop:            (940px + @grid-gutter-width);
+//** For `@screen-md-min` and up.
+@container-md:                 @container-desktop;
+
+// Large screen / wide desktop
+@container-large-desktop:      (1140px + @grid-gutter-width);
+//** For `@screen-lg-min` and up.
+@container-lg:                 @container-large-desktop;
 
 @state-success-text:             #fff;
 @state-success-bg:               @brand-success;

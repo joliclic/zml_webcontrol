@@ -183,16 +183,16 @@ textarea {
 //
 // See: http://a11yproject.com/posts/how-to-hide-content
 
-//.sr-only {
-//  position: absolute;
-//  width: 1px;
-//  height: 1px;
-//  margin: -1px;
-//  padding: 0;
-//  overflow: hidden;
-//  clip: rect(0,0,0,0);
-//  border: 0;
-//}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
 
 //h1, h2, h3, h4, h5, h6,
 //.h1, .h2, .h3, .h4, .h5, .h6 {
@@ -255,10 +255,10 @@ small,
 }
 
 // Make range inputs behave like textual form controls
-input[type="range"] {
-  display: block;
-  //width: 100%;
-}
+//input[type="range"] {
+//  display: block;
+//  //width: 100%;
+//}
 
 //button,
 //.btn {
@@ -440,22 +440,77 @@ button {
   .label-variant(@label-danger-bg);
 }
 
+//////
+
+input[type="text"] {
+  //width: 100%;
+  height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+  padding: @padding-base-vertical @padding-base-horizontal;
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+  color: @input-color;
+  background-color: @input-bg;
+  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+  border: 1px solid @input-border;
+  border-radius: @input-border-radius; // Note: This has no effect on <select>s in some browsers, due to the limited stylability of <select>s in CSS.
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
 
 
 /////
+.clearfix() {
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}
 
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left:  floor((@grid-gutter-width / 2));
+  padding-right: ceil((@grid-gutter-width / 2));
 
-.main-title {
-    text-align: center;
+  @media (min-width: @screen-sm-min) {
+    width: @container-sm;
+  }
+  @media (min-width: @screen-md-min) {
+    width: @container-md;
+  }
+  //@media (min-width: @screen-lg-min) {
+  //  width: @container-lg;
+  //}
+}
+
+h1, h2, h3, h4, h5, h6 {
     color: @gray-light;
 }
 
+.main-title {
+    text-align: center;
+    //color: @gray-light;
+    margin-bottom: @line-height-computed;
+    @media (max-width: @screen-sm-max) {
+        font-size: 7vw;
+    }
+}
+
 #mutable-cmd-box {
-    margin: 1em auto 2em;
+    margin: 3em auto 2em;
 }
 
 #status-box {
     text-align: right;
+    position: relative;
+}
+
+#status-box-inner {
+    position: absolute;
+    right: 0;
 }
 
 .substatus {
@@ -486,4 +541,82 @@ big.status-txt {
 
 .status-alert {
     .label-variant(@label-danger-bg)
+}
+
+.responses-box {
+    margin-top: 3.6em;
+    
+    //h5 {
+    //    color: @gray-light;
+    //}
+}
+
+#responses-textarea {
+    width: 100%;
+    max-width: 50em;
+    height: 8em;
+    padding: 0.3em 0.5em;
+    background: @gray-dark;
+    border: 2px solid black;
+    color: @gray-lighter;
+}
+
+.cmd-box {
+    margin: 1em 0;
+}
+
+.cmd-slidebox  {
+  .clearfix();
+}
+
+.cmd-slidebox .cmd-bt {
+    float: left;
+}
+
+.cmd-slidebox label {
+    margin-left: 8em;
+    display: block;
+    //width: 100%;
+}
+
+.cmd-slidebox .cmd-slider {
+    width: 100%;
+}
+
+.cmd-color-bt {
+    .btn-lg();
+    margin-bottom: 0.4em;
+    margin-right: 0.2em;
+}
+
+.cmb-bt-colorbox {
+    display: inline-block;
+    width: 2em;
+    //height: @line-height-computed;
+    height: @line-height-large
+}
+
+.bgled-black {
+    background-color: @ledcolor-black;
+}
+.bgled-white {
+    background-color: @ledcolor-white;
+}
+.bgled-purple {
+    background-color: @ledcolor-purple;
+}
+.bgled-orange {
+    background-color: @ledcolor-orange;
+}
+.bgled-red {
+    background-color: @ledcolor-red;
+}
+.bgled-yellow {
+    background-color: @ledcolor-yellow;
+}
+.bgled-green {
+    background-color: @ledcolor-green;
+}
+.bgled-blue {
+    background-color: @ledcolor-blue;
 }
