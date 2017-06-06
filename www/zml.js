@@ -67,8 +67,6 @@ function init() {
     if (textarea)
         textarea.value = ''
     
-    updateStatus();
-    
     var substatus_box = $('#substatus-box');
     gServers.forEach(function(server) {
         if (substatus_box) {
@@ -90,6 +88,8 @@ function init() {
             }
         });
     });
+    
+    updateStatus();
     
     var mutable_bt = $('#mutable-cmd-bt');
     var mutable_input = $('#mutable-cmd-input');
