@@ -14,6 +14,8 @@ var cfg = {
     
     src_dir: path.join('.', 'src'),
     
+    src_css_dir: path.join('.', 'src', 'css'),
+    
     target_dir: path.join('.', 'www'),
 };
 
@@ -37,7 +39,7 @@ function compile_css(aSrc, aDest) {
     });
 }
 
-var cssSrc = path.join(cfg.src_dir, 'zml.less');
+var cssSrc = path.join(cfg.src_css_dir, 'zml.less');
 var cssDest = path.join(cfg.target_dir, 'zml.css');
 compile_css(cssSrc, cssDest);
 
