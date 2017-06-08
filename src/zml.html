@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Zygos Mask Lights Control</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta name="theme-color" content="#222222">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#222222">
+    <!--<link rel="stylesheet" href="./zml.css">-->
+    <style>
+    /* @@_STYLES_@@ */
+    </style>
+    <script></script>
+</head>
+<body>
+
+<div id="page" class="container">
+    
+    <header>
+        <h1 class="main-title">Zygos Masks Lights Control</h1>
+    </header>
+    
+    <section id="status-box">
+        <div id="status-box-inner">
+            <div id="main-status-box"></div>
+            <div id="substatus-box"></div>
+        </div>
+    </section>
+    
+    <section class="responses-box">
+        <h5>Messages des serveurs&nbsp;:</h5>
+        <textarea id="responses-textarea" name="responses-textarea"
+                  maxlength="20" rows="5" cols="40" readonly></textarea>
+    </section>
+    
+    <section class="commands-box">
+        <h3>commandes&nbsp;:</h3>
+        
+        <div class="cmd-boxes">
+            <div class="cmd-box cmd-slidebox">
+                <button class="cmd-bt" data-cmd="blink">
+                    Clignoter
+                </button>
+                <label>
+                    <small>Vitesse&nbsp;:</small>
+                    <input class="cmd-slider" type="range" data-cmd="blinkspeed:"
+                           min="0" max="20" step="1" value="5">
+                </label>
+            </div>
+            <div class="cmd-box cmd-slidebox">
+                <button class="cmd-bt" data-cmd="chase">
+                    Chenillard
+                </button>
+                <label>
+                    <small>Vitesse&nbsp;:</small>
+                    <input class="cmd-slider" type="range" data-cmd="chasespeed:"
+                           min="0" max="50" step="1" value="20">
+                </label>
+            </div>
+            <br>
+            <div class="cmd-box">
+                <button class="cmd-bt cmd-color-bt" data-cmd="black">
+                    <span class="sr-only">Noir</span>
+                    <span class="cmb-bt-colorbox bgled-black">&nbsp;</span>
+                </button>
+                <button class="cmd-bt cmd-color-bt" data-cmd="color:#cccccc">
+                    <span class="sr-only">Blanc</span>
+                    <span class="cmb-bt-colorbox bgled-white">&nbsp;</span>
+                </button>
+                <button class="cmd-bt cmd-color-bt" data-cmd="color:#ff2a2a">
+                    <span class="sr-only">Rouge</span>
+                    <span class="cmb-bt-colorbox bgled-red">&nbsp;</span>
+                </button>
+                <button class="cmd-bt cmd-color-bt" data-cmd="color:#ff8200">
+                    <span class="sr-only">Orange</span>
+                    <span class="cmb-bt-colorbox bgled-orange">&nbsp;</span>
+                </button>
+                <button class="cmd-bt cmd-color-bt" data-cmd="color:#ffff38">
+                    <span class="sr-only">Jaune</span>
+                    <span class="cmb-bt-colorbox bgled-yellow">&nbsp;</span>
+                </button>
+                <button class="cmd-bt cmd-color-bt" data-cmd="color:#7bff2f">
+                    <span class="sr-only">Vert</span>
+                    <span class="cmb-bt-colorbox bgled-green">&nbsp;</span>
+                </button>
+                <button class="cmd-bt cmd-color-bt" data-cmd="color:#2f9dff">
+                    <span class="sr-only">Bleu</span>
+                    <span class="cmb-bt-colorbox bgled-blue">&nbsp;</span>
+                </button>
+                <button class="cmd-bt cmd-color-bt" data-cmd="color:#a900ff">
+                    <span class="sr-only">Violet</span>
+                    <span class="cmb-bt-colorbox bgled-purple">&nbsp;</span>
+                </button>
+            </div>
+        </div>
+        
+        <div id="mutable-cmd-box">
+            <label for="mutable-cmd-input">commande libre&nbsp;:</label>
+            <br>
+            <input type="text" id="mutable-cmd-input">
+            <button id="mutable-cmd-bt">
+                envoyer
+            </button>
+        </div>
+    </section>
+    
+    <footer>
+    </footer>
+    
+    <!--<script src="./zml.js"></script>-->
+    <script>
+    // @@_JS_@@
+    </script>
+
+</div>
+</body>
+</html>
