@@ -61,7 +61,7 @@ function compile_css_to(aSrc, aDest) {
 
 var cssSrc = path.join(cfg.src_css_dir, 'zml.less');
 var cssDest = path.join(cfg.target_dir, 'zml.css');
-compile_css_to(cssSrc, cssDest);
+//compile_css_to(cssSrc, cssDest);
 var styles = compile_css(cssSrc);
 
 var htmlSrcPath = path.join(cfg.src_dir, 'zml.html');
