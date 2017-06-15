@@ -306,7 +306,6 @@ button .badge {
   padding: .2em .6em .3em;
   font-size: 75%;
   font-weight: bold;
-  line-height: 1;
   color: #fff;
   text-align: center;
   white-space: nowrap;
@@ -538,11 +537,11 @@ h6 {
 }
 #status-box {
   text-align: right;
-  position: relative;
 }
-#status-box-inner {
-  position: absolute;
-  right: 0;
+#stati-bt {
+  margin-left: 1em;
+  margin-top: -2px;
+  vertical-align: baseline;
 }
 .substatus {
   margin: 1em 0;
@@ -552,7 +551,6 @@ h6 {
   padding: .2em .6em .3em;
   font-size: 75%;
   font-weight: bold;
-  line-height: 1;
   color: #fff;
   text-align: center;
   white-space: nowrap;
@@ -595,9 +593,6 @@ big.status-txt {
 .status-alert[href]:hover,
 .status-alert[href]:focus {
   background-color: #c9302c;
-}
-.responses-box {
-  margin-top: 3.6em;
 }
 #responses-textarea {
   width: 100%;
@@ -718,6 +713,10 @@ big.status-txt {
     
     <section id="status-box">
         <div id="status-box-inner">
+            <button id="stati-bt" style="float: right;">
+                <span id="stati-bt-icon" aria-hidden="true">▼</span>
+                <span class="sr-only">voir</span>
+            </button>
             <div id="main-status-box"></div>
             <div id="substatus-box"></div>
         </div>
@@ -1107,8 +1106,8 @@ function init() {
         }
     });
     
-    
     var substatus_box = $('#substatus-box');
+    substatus_box.style.display = 'none';
     gServers.forEach(function(server) {
         if (substatus_box) {
             server.status_box = document.createElement('div');
@@ -1128,6 +1127,21 @@ function init() {
                     substr(0, 500);
             }
         });
+    });
+    
+    var stati_bt = $('#stati-bt');
+    if (substatus_box.children.length < 1)
+        stati_bt.style.display = 'none';
+    stati_bt.addEventListener('click', function(e) {
+        var substatus_box = $('#substatus-box');
+        var icon = $('#stati-bt-icon');
+        if (substatus_box.style.display == 'none') {
+            substatus_box.style.display = '';
+            icon.innerHTML = '▲';
+        } else {
+            substatus_box.style.display = 'none';
+            icon.innerHTML = '▼';
+        }
     });
     
     updateStatus();

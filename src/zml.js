@@ -247,8 +247,8 @@ function init() {
         }
     });
     
-    
     var substatus_box = $('#substatus-box');
+    substatus_box.style.display = 'none';
     gServers.forEach(function(server) {
         if (substatus_box) {
             server.status_box = document.createElement('div');
@@ -268,6 +268,21 @@ function init() {
                     substr(0, 500);
             }
         });
+    });
+    
+    var stati_bt = $('#stati-bt');
+    if (substatus_box.children.length < 2)
+        stati_bt.style.display = 'none';
+    stati_bt.addEventListener('click', function(e) {
+        var substatus_box = $('#substatus-box');
+        var icon = $('#stati-bt-icon');
+        if (substatus_box.style.display == 'none') {
+            substatus_box.style.display = '';
+            icon.innerHTML = '▲';
+        } else {
+            substatus_box.style.display = 'none';
+            icon.innerHTML = '▼';
+        }
     });
     
     updateStatus();
