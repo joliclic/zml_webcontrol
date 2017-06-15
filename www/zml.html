@@ -471,6 +471,11 @@ input[type=range]:focus::-ms-fill-lower {
 input[type=range]:focus::-ms-fill-upper {
   background: #626262;
 }
+input[type=range].colorslider::-webkit-slider-runnable-track {
+  box-shadow: 0 0 0 transparent, 0px 0px 0 rgba(13, 13, 13, 0);
+  background: transparent;
+  border: none;
+}
 input[type=range].colorslider::-webkit-slider-thumb {
   box-shadow: 0 0 0 transparent, 0px 0px 0 rgba(13, 13, 13, 0);
   border-radius: 0;
@@ -478,8 +483,13 @@ input[type=range].colorslider::-webkit-slider-thumb {
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 0 10px 17.3px 10px;
+  border-width: 17.3px 10px 17.3px 10px;
   border-color: transparent #000 #fff #000;
+  margin-top: -17.3px;
+}
+input[type=range].colorslider::-moz-range-track {
+  background: transparent;
+  border: none;
 }
 input[type=range].colorslider::-moz-range-thumb {
   box-shadow: 0 0 0 transparent, 0px 0px 0 rgba(13, 13, 13, 0);
@@ -488,8 +498,16 @@ input[type=range].colorslider::-moz-range-thumb {
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 0 10px 17.3px 10px;
+  border-width: 17.3px 10px 17.3px 10px;
   border-color: transparent #000 #fff #000;
+}
+input[type=range].colorslider::-ms-fill-lower {
+  background: transparent;
+  border: none;
+}
+input[type=range].colorslider::-ms-fill-upper {
+  background: transparent;
+  border: none;
 }
 .clearfix:before,
 .clearfix:after {
@@ -688,6 +706,10 @@ big.status-txt {
   margin: 0 10px;
   background-color: white;
   background-repeat: no-repeat;
+}
+.colorslider {
+  position: relative;
+  top: -7px;
 }
 #gb-hue {
   background-image: linear-gradient(to right, #f00, #ff0 16.66%, #0f0 33.33%, #0ff 50%, #00f 66.66%, #f0f 83.33%, #f00);
@@ -1130,7 +1152,7 @@ function init() {
     });
     
     var stati_bt = $('#stati-bt');
-    if (substatus_box.children.length < 1)
+    if (substatus_box.children.length < 2)
         stati_bt.style.display = 'none';
     stati_bt.addEventListener('click', function(e) {
         var substatus_box = $('#substatus-box');

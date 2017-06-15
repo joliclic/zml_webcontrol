@@ -137,8 +137,8 @@ input[type=range] {
     border-style: solid;
     // for an equilateral trinagle:
     // border-bottom-width = 0.866 * border-left-width + border-right-width 
-    border-width: 0 10px 17.3px 10px;
-    //border-width: 17.3px 10px 17.3px 10px;
+    //border-width: 0 10px 17.3px 10px;
+    border-width: 17.3px 10px 17.3px 10px;
     border-color: transparent #000 #fff #000;
 }
 
@@ -151,10 +151,13 @@ input[type=range].colorslider {
   &::-webkit-slider-runnable-track {
     //.track();
     //.shadow(@track-shadow-size,@track-shadow-blur,@track-shadow-color);
+    .shadow(0, 0, transparent);
     //background: @track-color;
     //border-radius: @track-radius;
     //border: @track-border-width solid @track-border-color;
     //height: @track-height + 2 * @track-border-width;
+    background: transparent;
+    border: none;
   }
   
   &::-webkit-slider-thumb {
@@ -163,6 +166,7 @@ input[type=range].colorslider {
     //-webkit-appearance: none;
     //margin-top: ((-@track-border-width * 2 + @track-height) / 2) - (@thumb-height / 2);
     .colorslider-thumb();
+    margin-top: -17.3px;
   }
 
   &:focus::-webkit-slider-runnable-track {
@@ -175,6 +179,8 @@ input[type=range].colorslider {
     //background: @track-color;
     //border-radius: @track-radius;
     //border: @track-border-width solid @track-border-color;
+    background: transparent;
+    border: none;
   }
   &::-moz-range-thumb {
     //.thumb();
@@ -194,12 +200,16 @@ input[type=range].colorslider {
     //border: @track-border-width solid @track-border-color;
     //border-radius: @track-radius*2;
     //.shadow(@track-shadow-size,@track-shadow-blur,@track-shadow-color);
+    background: transparent;
+    border: none;
   }
   &::-ms-fill-upper {
     //background: @track-color;
     //border: @track-border-width solid @track-border-color;
     //border-radius: @track-radius*2;
     //.shadow(@track-shadow-size,@track-shadow-blur,@track-shadow-color);
+    background: transparent;
+    border: none;
   }
   &::-ms-thumb {
     //.thumb();
