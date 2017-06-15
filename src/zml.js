@@ -3,7 +3,7 @@
 var gServers = [
     {
         name: 'PifLeChien',
-        //url: 'ws:/192.168.2.31:81',
+        //url: 'ws:/192.168.2.37:81',
         url: 'ws:/192.168.0.42:81',
         //url: 'ws:/192.168.0.21:81',
         websocket: null,
@@ -63,6 +63,171 @@ function updateStatus() {
     }
 }
 
+function rgb2hsl(r, g, b) {
+    var h = 0, s = 0, l = 0;
+    
+    var r = r / 255;
+    var g = g / 255;
+    var b = b / 255;
+    
+    var max = Math.max(r, g, b);
+    var min = Math.min(r, g, b);
+    var delta = max - min;
+    
+    var sum = max + min;
+    l = Math.round(sum * 50);
+    
+    if (max == min) {
+        s = 0
+    } else {
+        if (l <= 50)
+            s = Math.round(100 * delta / sum);
+        else
+            s = Math.round(100 * delta / (2 - sum));
+    }
+    
+    if (max == min)  {
+        h = 0;
+    } else if (max == r) {
+        h = Math.round(60 * (g - b) / delta);
+    } else if (max == g) {
+        h = Math.round(120 + 60 * (b - r) / delta);
+    } else if (max == b) {
+        h = Math.round(240 + 60 * (r - g) / delta);
+    }
+    
+    if (h < 0) h += 360;
+    
+    return {h: h, s: s, l: l};
+}
+
+function h2rgb(aV1, aV2, aH) {
+    if (aH < 0) aH += 6;
+    if (aH > 6) aH -= 6;
+    
+    if (aH < 1)
+        return aV1 + (aV2 - aV1) * aH;
+    if (aH < 3)
+        return aV2;
+    if (aH < 4)
+        return aV1 + (aV2 - aV1) * (4 - aH);
+    
+    return aV1;
+}
+
+function hsl2rgb(h, s, l) {
+    var r = 0, g = 0, b = 0;
+    
+    if (s == 0) {
+        // gray
+        r = g = b = Math.round(l * 2.55);
+        
+        return {r: r, g: g, b: b};
+    }
+    
+    var hr = h / 60,
+        sr = s / 100,
+        lr = l / 100;
+    
+    var v2;
+    if (l < 50)
+        v2 = lr * (1 + sr);
+    else
+        v2 = lr + sr - lr * sr;
+    
+    var v1 = 2 * lr - v2;
+    
+    r = Math.round(255 * h2rgb(v1, v2, (hr + 2)));
+    g = Math.round(255 * h2rgb(v1, v2, hr));
+    b = Math.round(255 * h2rgb(v1, v2, (hr - 2)));
+    
+    return {r: r, g: g, b: b};
+}
+
+function hex(n) {
+    var x = n.toString(16);
+    if (x.length == 1)
+        x = '0' + x;
+    
+    return x;
+}
+
+function rgb2hexa(r, g, b, a3digit) {
+    var hex_r = hex(r);
+    var hex_g = hex(g);
+    var hex_b = hex(b);
+    
+    if (a3digit && hex_r[0] == hex_r[1] && hex_g[0] == hex_g[1]
+        && hex_b[0] == hex_b[1]) {
+        hex_r = hex_r[0];
+        hex_g = hex_g[0];
+        hex_b = hex_b[0];
+    }
+    
+    return "#" + hex_r + hex_g + hex_b;
+}
+
+var gHSL_H_slider, gHSL_S_slider, gHSL_L_slider;
+var gHSL_H_gradient, gHSL_S_gradient, gHSL_L_gradient;
+var gColorsample, gColortext;
+
+function _setHSLdata(aIgnore) {
+    var h = gHSL_H_slider.value;
+    var s = gHSL_S_slider.value;
+    var l = gHSL_L_slider.value;
+    
+    if (! ('h' in aIgnore)) {
+        gHSL_H_gradient.style.backgroundImage =
+            'linear-gradient(to right, ' +
+            'hsl(0, ' + s + '%, ' + l + '%), ' +
+            'hsl(60, ' + s + '%, ' + l + '%) 16.66%, ' +
+            'hsl(120, ' + s + '%, ' + l + '%) 33.33%, ' +
+            'hsl(180, ' + s + '%, ' + l + '%) 50%, ' +
+            'hsl(240, ' + s + '%, ' + l + '%) 66.66%, ' +
+            'hsl(300, ' + s + '%, ' + l + '%) 83.33%, ' +
+            'hsl(360, ' + s + '%, ' + l + '%) ' +
+            ')';
+    }
+    
+    if (! ('s' in aIgnore)) {
+        gHSL_S_gradient.style.backgroundImage =
+            'linear-gradient(to right, ' +
+            'hsl(' + h + ', 0%, ' + l + '%), ' +
+            'hsl(' + h + ', 100%, ' + l + '%) ' +
+            ')';
+    }
+    
+    if (! ('l' in aIgnore)) {
+        gHSL_L_gradient.style.backgroundImage =
+            'linear-gradient(to right, ' +
+            'hsl(' + h + ', ' + s + '%, 0%), ' +
+            'hsl(' + h + ', ' + s + '%, ' + l + '%) 50%, ' +
+            'hsl(' + h + ', ' + s + '%, 100%) ' +
+            ')';
+    }
+    
+    gColorsample.style.backgroundColor = 'hsl(' + h + ',' + s + '%,' + l +  '%)';
+    var rgb = hsl2rgb(h, s, l);
+    var hexa = rgb2hexa(rgb.r, rgb.g, rgb.b);
+    gColortext.innerHTML =
+        'rgb(' + rgb.r + ', ' + rgb.g + ', ' + rgb.b + ')' + '<br>' +
+        'hsl(' + h + ', ' + s + ', ' + l + ')' + '<br>' +
+        hexa;
+    sendCommand('color:' + hexa);
+}
+
+function setHSL_hue() {
+    _setHSLdata({h: true});
+}
+
+function setHSL_saturation() {
+    _setHSLdata({s: true});
+}
+
+function setHSL_lightness() {
+    _setHSLdata({l: true});
+}
+
 function init() {
     var textarea = $('#responses-textarea');
     if (textarea)
@@ -111,12 +276,30 @@ function init() {
     });
     
     $$('.cmd-slider').forEach(function(elt) {
-        elt.addEventListener('change', function(evt) {
+        // perhaps the 'input' event occurs too often, some tests should be tried...
+        elt.addEventListener('input', function(evt) {
+        //elt.addEventListener('change', function(evt) {
             var cmd = this.getAttribute('data-cmd');
             if (cmd)
                 sendCommand(cmd + this.value);
         });
     });
+    
+    gHSL_H_slider = $('#cs-hsl-h');
+    gHSL_S_slider = $('#cs-hsl-s');
+    gHSL_L_slider = $('#cs-hsl-l');
+    gHSL_H_gradient = $('#gb-hsl-h');
+    gHSL_S_gradient = $('#gb-hsl-s');
+    gHSL_L_gradient = $('#gb-hsl-l');
+    gColorsample = $('#colorsample');
+    gColortext = $('#colortext');
+    
+    //gHSL_H_slider.addEventListener('change', setHSL_hue);
+    //gHSL_S_slider.addEventListener('change', setHSL_saturation);
+    //gHSL_L_slider.addEventListener('change', setHSL_lightness);
+    gHSL_H_slider.addEventListener('input', setHSL_hue);
+    gHSL_S_slider.addEventListener('input', setHSL_saturation);
+    gHSL_L_slider.addEventListener('input', setHSL_lightness);
     
     setInterval(function() {updateStatus}, 1000);
 }

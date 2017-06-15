@@ -103,6 +103,48 @@
             </div>
         </div>
         
+        <div id="hsl-selector-box" class="clearfix">
+            <div id="colorsample-box">
+                <div id="colorsample" style="background-color: rgb(169, 0, 255);"></div>
+                <div id="colortext">
+                    rgb(169, 0, 255);
+                    <br>
+                    hsl(280, 100, 50)
+                    <br>
+                    #a900ff
+                </div>
+            </div>
+            <div id="hsl-sliders">
+                <div class="colorslidebox">
+                    <label for="cs-hsl-h">
+                        <small>Teinte&nbsp;:</small>
+                    </label>
+                    <div id="gb-hsl-h" class="gradientbox"
+                         style="background-image: linear-gradient(to right, #f00, #ff0 16.66%, #0f0 33.33%, #0ff 50%, #00f 66.66%, #f0f 83.33%, #f00);"></div>
+                    <input id="cs-hsl-h" class="colorslider" type="range"
+                           min="0" max="360" step="1" value="280">
+                </div>
+                <div class="colorslidebox">
+                    <label for="cs-hsl-s">
+                        <small>Saturation&nbsp;:</small>
+                    </label>
+                    <div id="gb-hsl-s" class="gradientbox"
+                         style="background-image: linear-gradient(to right, hsl(280, 0%, 50%), hsl(280, 100%, 50%));"></div>
+                    <input id="cs-hsl-s" class="colorslider" type="range"
+                           min="0" max="100" step="1" value="100">
+                </div>
+                <div class="colorslidebox">
+                    <label for="cs-hsl-l">
+                        <small>Valeur&nbsp;:</small>
+                    </label>
+                    <div id="gb-hsl-l" class="gradientbox"
+                         style="background-image: linear-gradient(to right, hsl(280, 100%, 0%), hsl(280, 100%, 50%) 50%, hsl(280, 100%, 100%));"></div>
+                    <input id="cs-hsl-l" class="colorslider" type="range"
+                           min="0" max="100" step="1" value="50">
+                </div>
+            </div>
+        </div>
+        
         <div id="mutable-cmd-box">
             <label for="mutable-cmd-input">commande libre&nbsp;:</label>
             <br>

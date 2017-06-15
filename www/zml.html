@@ -405,13 +405,13 @@ input[type=range]::-webkit-slider-runnable-track {
 input[type=range]::-webkit-slider-thumb {
   box-shadow: 1px 1px 1px #111, 0px 0px 1px #1e1e1e;
   border: 1px solid #555555;
-  height: 20px;
-  width: 12px;
-  border-radius: 8px;
-  background: #777777;
+  height: 22px;
+  width: 14px;
+  border-radius: 3px 3px 8px 8px;
+  background: #9d9d9d;
   cursor: pointer;
   -webkit-appearance: none;
-  margin-top: -9px;
+  margin-top: -10px;
 }
 input[type=range]:focus::-webkit-slider-runnable-track {
   background: #626262;
@@ -429,10 +429,10 @@ input[type=range]::-moz-range-track {
 input[type=range]::-moz-range-thumb {
   box-shadow: 1px 1px 1px #111, 0px 0px 1px #1e1e1e;
   border: 1px solid #555555;
-  height: 20px;
-  width: 12px;
-  border-radius: 8px;
-  background: #777777;
+  height: 22px;
+  width: 14px;
+  border-radius: 3px 3px 8px 8px;
+  background: #9d9d9d;
   cursor: pointer;
 }
 input[type=range]::-ms-track {
@@ -442,7 +442,7 @@ input[type=range]::-ms-track {
   animate: 0.2s;
   background: transparent;
   border-color: transparent;
-  border-width: 12px 0;
+  border-width: 14px 0;
   color: transparent;
 }
 input[type=range]::-ms-fill-lower {
@@ -460,10 +460,10 @@ input[type=range]::-ms-fill-upper {
 input[type=range]::-ms-thumb {
   box-shadow: 1px 1px 1px #111, 0px 0px 1px #1e1e1e;
   border: 1px solid #555555;
-  height: 20px;
-  width: 12px;
-  border-radius: 8px;
-  background: #777777;
+  height: 22px;
+  width: 14px;
+  border-radius: 3px 3px 8px 8px;
+  background: #9d9d9d;
   cursor: pointer;
 }
 input[type=range]:focus::-ms-fill-lower {
@@ -471,6 +471,34 @@ input[type=range]:focus::-ms-fill-lower {
 }
 input[type=range]:focus::-ms-fill-upper {
   background: #626262;
+}
+input[type=range].colorslider::-webkit-slider-thumb {
+  box-shadow: 0 0 0 transparent, 0px 0px 0 rgba(13, 13, 13, 0);
+  border-radius: 0;
+  background: transparent;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 10px 17.3px 10px;
+  border-color: transparent #000 #fff #000;
+}
+input[type=range].colorslider::-moz-range-thumb {
+  box-shadow: 0 0 0 transparent, 0px 0px 0 rgba(13, 13, 13, 0);
+  border-radius: 0;
+  background: transparent;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 10px 17.3px 10px;
+  border-color: transparent #000 #fff #000;
+}
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
 }
 .container {
   margin-right: auto;
@@ -591,6 +619,14 @@ big.status-txt {
 .cmd-slidebox:after {
   clear: both;
 }
+.cmd-slidebox:before,
+.cmd-slidebox:after {
+  content: " ";
+  display: table;
+}
+.cmd-slidebox:after {
+  clear: both;
+}
 .cmd-slidebox .cmd-bt {
   float: left;
 }
@@ -609,7 +645,7 @@ big.status-txt {
 .cmb-bt-colorbox {
   display: inline-block;
   width: 2em;
-  height: 1.3333333;
+  line-height: 1.3333333;
 }
 .bgled-black {
   background-color: #000;
@@ -634,6 +670,39 @@ big.status-txt {
 }
 .bgled-blue {
   background-color: #2f9dff;
+}
+#hsl-selector-box {
+  margin-top: 2em;
+}
+#colorsample-box {
+  width: 100px;
+  float: left;
+}
+#colorsample {
+  width: 100px;
+  height: 100px;
+  border: 2px solid black;
+  background-color: #a900ff;
+}
+#colortext {
+  font-size: 12px;
+  color: #555555;
+}
+.gradientbox {
+  height: 20px;
+  margin: 0 10px;
+  background-color: white;
+  background-repeat: no-repeat;
+}
+#gb-hue {
+  background-image: linear-gradient(to right, #f00, #ff0 16.66%, #0f0 33.33%, #0ff 50%, #00f 66.66%, #f0f 83.33%, #f00);
+}
+#hsl-sliders {
+  margin: 0 0 0 120px;
+}
+#cs-hue {
+  position: relative;
+  top: -1px;
 }
 
     </style>
@@ -726,6 +795,48 @@ big.status-txt {
             </div>
         </div>
         
+        <div id="hsl-selector-box" class="clearfix">
+            <div id="colorsample-box">
+                <div id="colorsample" style="background-color: rgb(169, 0, 255);"></div>
+                <div id="colortext">
+                    rgb(169, 0, 255);
+                    <br>
+                    hsl(280, 100, 50)
+                    <br>
+                    #a900ff
+                </div>
+            </div>
+            <div id="hsl-sliders">
+                <div class="colorslidebox">
+                    <label for="cs-hsl-h">
+                        <small>Teinte&nbsp;:</small>, 
+                    </label>
+                    <div id="gb-hsl-h" class="gradientbox"
+                         style="background-image: linear-gradient(to right, #f00, #ff0 16.66%, #0f0 33.33%, #0ff 50%, #00f 66.66%, #f0f 83.33%, #f00);"></div>
+                    <input id="cs-hsl-h" class="colorslider" type="range"
+                           min="0" max="360" step="1" value="280">
+                </div>
+                <div class="colorslidebox">
+                    <label for="cs-hsl-s">
+                        <small>Saturation&nbsp;:</small>
+                    </label>
+                    <div id="gb-hsl-s" class="gradientbox"
+                         style="background-image: linear-gradient(to right, hsl(280, 0%, 50%), hsl(280, 100%, 50%));"></div>
+                    <input id="cs-hsl-s" class="colorslider" type="range"
+                           min="0" max="100" step="1" value="100">
+                </div>
+                <div class="colorslidebox">
+                    <label for="cs-hsl-l">
+                        <small>Valeur&nbsp;:</small>
+                    </label>
+                    <div id="gb-hsl-l" class="gradientbox"
+                         style="background-image: linear-gradient(to right, hsl(280, 100%, 0%), hsl(280, 100%, 50%) 50%, hsl(280, 100%, 100%));"></div>
+                    <input id="cs-hsl-l" class="colorslider" type="range"
+                           min="0" max="100" step="1" value="50">
+                </div>
+            </div>
+        </div>
+        
         <div id="mutable-cmd-box">
             <label for="mutable-cmd-input">commande libre&nbsp;:</label>
             <br>
@@ -746,7 +857,7 @@ big.status-txt {
 var gServers = [
     {
         name: 'PifLeChien',
-        //url: 'ws:/192.168.2.31:81',
+        //url: 'ws:/192.168.2.37:81',
         url: 'ws:/192.168.0.42:81',
         //url: 'ws:/192.168.0.21:81',
         websocket: null,
@@ -806,6 +917,171 @@ function updateStatus() {
     }
 }
 
+function rgb2hsl(r, g, b) {
+    var h = 0, s = 0, l = 0;
+    
+    var r = r / 255;
+    var g = g / 255;
+    var b = b / 255;
+    
+    var max = Math.max(r, g, b);
+    var min = Math.min(r, g, b);
+    var delta = max - min;
+    
+    var sum = max + min;
+    l = Math.round(sum * 50);
+    
+    if (max == min) {
+        s = 0
+    } else {
+        if (l <= 50)
+            s = Math.round(100 * delta / sum);
+        else
+            s = Math.round(100 * delta / (2 - sum));
+    }
+    
+    if (max == min)  {
+        h = 0;
+    } else if (max == r) {
+        h = Math.round(60 * (g - b) / delta);
+    } else if (max == g) {
+        h = Math.round(120 + 60 * (b - r) / delta);
+    } else if (max == b) {
+        h = Math.round(240 + 60 * (r - g) / delta);
+    }
+    
+    if (h < 0) h += 360;
+    
+    return {h: h, s: s, l: l};
+}
+
+function h2rgb(aV1, aV2, aH) {
+    if (aH < 0) aH += 6;
+    if (aH > 6) aH -= 6;
+    
+    if (aH < 1)
+        return aV1 + (aV2 - aV1) * aH;
+    if (aH < 3)
+        return aV2;
+    if (aH < 4)
+        return aV1 + (aV2 - aV1) * (4 - aH);
+    
+    return aV1;
+}
+
+function hsl2rgb(h, s, l) {
+    var r = 0, g = 0, b = 0;
+    
+    if (s == 0) {
+        // gray
+        r = g = b = Math.round(l * 2.55);
+        
+        return {r: r, g: g, b: b};
+    }
+    
+    var hr = h / 60,
+        sr = s / 100,
+        lr = l / 100;
+    
+    var v2;
+    if (l < 50)
+        v2 = lr * (1 + sr);
+    else
+        v2 = lr + sr - lr * sr;
+    
+    var v1 = 2 * lr - v2;
+    
+    r = Math.round(255 * h2rgb(v1, v2, (hr + 2)));
+    g = Math.round(255 * h2rgb(v1, v2, hr));
+    b = Math.round(255 * h2rgb(v1, v2, (hr - 2)));
+    
+    return {r: r, g: g, b: b};
+}
+
+function hex(n) {
+    var x = n.toString(16);
+    if (x.length == 1)
+        x = '0' + x;
+    
+    return x;
+}
+
+function rgb2hexa(r, g, b, a3digit) {
+    var hex_r = hex(r);
+    var hex_g = hex(g);
+    var hex_b = hex(b);
+    
+    if (a3digit && hex_r[0] == hex_r[1] && hex_g[0] == hex_g[1]
+        && hex_b[0] == hex_b[1]) {
+        hex_r = hex_r[0];
+        hex_g = hex_g[0];
+        hex_b = hex_b[0];
+    }
+    
+    return "#" + hex_r + hex_g + hex_b;
+}
+
+var gHSL_H_slider, gHSL_S_slider, gHSL_L_slider;
+var gHSL_H_gradient, gHSL_S_gradient, gHSL_L_gradient;
+var gColorsample, gColortext;
+
+function _setHSLdata(aIgnore) {
+    var h = gHSL_H_slider.value;
+    var s = gHSL_S_slider.value;
+    var l = gHSL_L_slider.value;
+    
+    if (! ('h' in aIgnore)) {
+        gHSL_H_gradient.style.backgroundImage =
+            'linear-gradient(to right, ' +
+            'hsl(0, ' + s + '%, ' + l + '%), ' +
+            'hsl(60, ' + s + '%, ' + l + '%) 16.66%, ' +
+            'hsl(120, ' + s + '%, ' + l + '%) 33.33%, ' +
+            'hsl(180, ' + s + '%, ' + l + '%) 50%, ' +
+            'hsl(240, ' + s + '%, ' + l + '%) 66.66%, ' +
+            'hsl(300, ' + s + '%, ' + l + '%) 83.33%, ' +
+            'hsl(360, ' + s + '%, ' + l + '%) ' +
+            ')';
+    }
+    
+    if (! ('s' in aIgnore)) {
+        gHSL_S_gradient.style.backgroundImage =
+            'linear-gradient(to right, ' +
+            'hsl(' + h + ', 0%, ' + l + '%), ' +
+            'hsl(' + h + ', 100%, ' + l + '%) ' +
+            ')';
+    }
+    
+    if (! ('l' in aIgnore)) {
+        gHSL_L_gradient.style.backgroundImage =
+            'linear-gradient(to right, ' +
+            'hsl(' + h + ', ' + s + '%, 0%), ' +
+            'hsl(' + h + ', ' + s + '%, ' + l + '%) 50%, ' +
+            'hsl(' + h + ', ' + s + '%, 100%) ' +
+            ')';
+    }
+    
+    gColorsample.style.backgroundColor = 'hsl(' + h + ',' + s + '%,' + l +  '%)';
+    var rgb = hsl2rgb(h, s, l);
+    var hexa = rgb2hexa(rgb.r, rgb.g, rgb.b);
+    gColortext.innerHTML =
+        'rgb(' + rgb.r + ', ' + rgb.g + ', ' + rgb.b + ')' + '<br>' +
+        'hsl(' + h + ', ' + s + ', ' + l + ')' + '<br>' +
+        hexa;
+    sendCommand('color:' + hexa);
+}
+
+function setHSL_hue() {
+    _setHSLdata({h: true});
+}
+
+function setHSL_saturation() {
+    _setHSLdata({s: true});
+}
+
+function setHSL_lightness() {
+    _setHSLdata({l: true});
+}
+
 function init() {
     var textarea = $('#responses-textarea');
     if (textarea)
@@ -854,12 +1130,30 @@ function init() {
     });
     
     $$('.cmd-slider').forEach(function(elt) {
-        elt.addEventListener('change', function(evt) {
+        // perhaps the 'input' event occurs too often, some tests should be tried...
+        elt.addEventListener('input', function(evt) {
+        //elt.addEventListener('change', function(evt) {
             var cmd = this.getAttribute('data-cmd');
             if (cmd)
                 sendCommand(cmd + this.value);
         });
     });
+    
+    gHSL_H_slider = $('#cs-hsl-h');
+    gHSL_S_slider = $('#cs-hsl-s');
+    gHSL_L_slider = $('#cs-hsl-l');
+    gHSL_H_gradient = $('#gb-hsl-h');
+    gHSL_S_gradient = $('#gb-hsl-s');
+    gHSL_L_gradient = $('#gb-hsl-l');
+    gColorsample = $('#colorsample');
+    gColortext = $('#colortext');
+    
+    //gHSL_H_slider.addEventListener('change', setHSL_hue);
+    //gHSL_S_slider.addEventListener('change', setHSL_saturation);
+    //gHSL_L_slider.addEventListener('change', setHSL_lightness);
+    gHSL_H_slider.addEventListener('input', setHSL_hue);
+    gHSL_S_slider.addEventListener('input', setHSL_saturation);
+    gHSL_L_slider.addEventListener('input', setHSL_lightness);
     
     setInterval(function() {updateStatus}, 1000);
 }

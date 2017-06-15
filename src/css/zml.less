@@ -470,6 +470,19 @@ input[type="text"] {
   }
 }
 
+.clearfix {
+  .clearfix();
+}
+//.center-block {
+//  .center-block();
+//}
+//.pull-right {
+//  float: right !important;
+//}
+//.pull-left {
+//  float: left !important;
+//}
+
 .container {
   margin-right: auto;
   margin-left: auto;
@@ -594,7 +607,7 @@ big.status-txt {
     display: inline-block;
     width: 2em;
     //height: @line-height-computed;
-    height: @line-height-large
+    line-height: @line-height-large;
 }
 
 .bgled-black {
@@ -621,3 +634,5 @@ big.status-txt {
 .bgled-blue {
     background-color: @ledcolor-blue;
 }
+
+@import "color-selector.less";
