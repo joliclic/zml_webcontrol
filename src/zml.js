@@ -230,8 +230,23 @@ function setHSL_lightness() {
 
 function init() {
     var textarea = $('#responses-textarea');
-    if (textarea)
-        textarea.value = ''
+    //if (textarea) {
+        textarea.style.display = 'none';
+        textarea.value = '';
+    //}
+    var response_bt = $('#responses-bt');
+    response_bt.addEventListener('click', function(e) {
+        var textarea = $('#responses-textarea');
+        var icon = $('#responses-bt-icon');
+        if (textarea.style.display == 'none') {
+            textarea.style.display = '';
+            icon.innerHTML = '▲';
+        } else {
+            textarea.style.display = 'none';
+            icon.innerHTML = '▼';
+        }
+    });
+    
     
     var substatus_box = $('#substatus-box');
     gServers.forEach(function(server) {

@@ -724,7 +724,13 @@ big.status-txt {
     </section>
     
     <section class="responses-box">
-        <h5>Messages des serveurs&nbsp;:</h5>
+        <h5>
+            Messages des serveurs&nbsp;:
+            <button id="responses-bt">
+                <span id="responses-bt-icon" aria-hidden="true">▼</span>
+                <span class="sr-only">voir</span>
+            </button>
+        </h5>
         <textarea id="responses-textarea" name="responses-textarea"
                   maxlength="20" rows="5" cols="40" readonly></textarea>
     </section>
@@ -809,7 +815,7 @@ big.status-txt {
             <div id="hsl-sliders">
                 <div class="colorslidebox">
                     <label for="cs-hsl-h">
-                        <small>Teinte&nbsp;:</small>, 
+                        <small>Teinte&nbsp;:</small>
                     </label>
                     <div id="gb-hsl-h" class="gradientbox"
                          style="background-image: linear-gradient(to right, #f00, #ff0 16.66%, #0f0 33.33%, #0ff 50%, #00f 66.66%, #f0f 83.33%, #f00);"></div>
@@ -1084,8 +1090,23 @@ function setHSL_lightness() {
 
 function init() {
     var textarea = $('#responses-textarea');
-    if (textarea)
-        textarea.value = ''
+    //if (textarea) {
+        textarea.style.display = 'none';
+        textarea.value = '';
+    //}
+    var response_bt = $('#responses-bt');
+    response_bt.addEventListener('click', function(e) {
+        var textarea = $('#responses-textarea');
+        var icon = $('#responses-bt-icon');
+        if (textarea.style.display == 'none') {
+            textarea.style.display = '';
+            icon.innerHTML = '▲';
+        } else {
+            textarea.style.display = 'none';
+            icon.innerHTML = '▼';
+        }
+    });
+    
     
     var substatus_box = $('#substatus-box');
     gServers.forEach(function(server) {
