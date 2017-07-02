@@ -622,6 +622,10 @@ big.status-txt {
   color: #eeeeee;
 }
 .big-bt {
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 6px;
   font-size: 1.8em;
   width: 100%;
   margin-top: 1em;
@@ -652,7 +656,8 @@ big.status-txt {
   margin-left: 8em;
   display: block;
 }
-.cmd-color-bt {
+.cmd-color-bt,
+.color-bt {
   padding: 10px 16px;
   font-size: 18px;
   line-height: 1.3333333;
@@ -660,7 +665,8 @@ big.status-txt {
   margin-bottom: 0.4em;
   margin-right: 0.2em;
 }
-.cmb-bt-colorbox {
+.cmb-bt-colorbox,
+.color-bt-cbox {
   display: inline-block;
   width: 2em;
   line-height: 1.3333333;
@@ -799,37 +805,37 @@ big.status-txt {
             </div>
             <br>
             <div class="cmd-box">
-                <button class="cmd-bt cmd-color-bt" data-cmd="color:#000000">
+                <button class="color-bt" data-color="hsl(0, 0%, 0%)">
                     <span class="sr-only">Noir</span>
-                    <span class="cmb-bt-colorbox bgled-black">&nbsp;</span>
+                    <span class="color-bt-cbox bgled-black">&nbsp;</span>
                 </button>
-                <button class="cmd-bt cmd-color-bt" data-cmd="color:#cccccc">
+                <button class="color-bt" data-color="hsl(0, 0%, 80%)">
                     <span class="sr-only">Blanc</span>
-                    <span class="cmb-bt-colorbox bgled-white">&nbsp;</span>
+                    <span class="color-bt-cbox bgled-white">&nbsp;</span>
                 </button>
-                <button class="cmd-bt cmd-color-bt" data-cmd="color:#ff2a2a">
+                <button class="color-bt" data-color="hsl(0, 100%, 58%)">
                     <span class="sr-only">Rouge</span>
-                    <span class="cmb-bt-colorbox bgled-red">&nbsp;</span>
+                    <span class="color-bt-cbox bgled-red">&nbsp;</span>
                 </button>
-                <button class="cmd-bt cmd-color-bt" data-cmd="color:#ff8200">
+                <button class="color-bt" data-color="hsl(31, 100%, 50%)">
                     <span class="sr-only">Orange</span>
-                    <span class="cmb-bt-colorbox bgled-orange">&nbsp;</span>
+                    <span class="color-bt-cbox bgled-orange">&nbsp;</span>
                 </button>
-                <button class="cmd-bt cmd-color-bt" data-cmd="color:#ffff38">
+                <button class="color-bt" data-color="hsl(60, 100%, 61%)">
                     <span class="sr-only">Jaune</span>
-                    <span class="cmb-bt-colorbox bgled-yellow">&nbsp;</span>
+                    <span class="color-bt-cbox bgled-yellow">&nbsp;</span>
                 </button>
-                <button class="cmd-bt cmd-color-bt" data-cmd="color:#7bff2f">
+                <button class="color-bt" data-color="hsl(98, 100%, 59%)">
                     <span class="sr-only">Vert</span>
-                    <span class="cmb-bt-colorbox bgled-green">&nbsp;</span>
+                    <span class="color-bt-cbox bgled-green">&nbsp;</span>
                 </button>
-                <button class="cmd-bt cmd-color-bt" data-cmd="color:#2f9dff">
+                <button class="color-bt" data-color="hsl(208, 100%, 59%)">
                     <span class="sr-only">Bleu</span>
-                    <span class="cmb-bt-colorbox bgled-blue">&nbsp;</span>
+                    <span class="color-bt-cbox bgled-blue">&nbsp;</span>
                 </button>
-                <button class="cmd-bt cmd-color-bt" data-cmd="color:#a900ff">
+                <button class="color-bt" data-color="hsl(280, 100%, 50%)">
                     <span class="sr-only">Violet</span>
-                    <span class="cmb-bt-colorbox bgled-purple">&nbsp;</span>
+                    <span class="color-bt-cbox bgled-purple">&nbsp;</span>
                 </button>
             </div>
         </div>
@@ -1064,12 +1070,26 @@ var gHSL_H_slider, gHSL_S_slider, gHSL_L_slider;
 var gHSL_H_gradient, gHSL_S_gradient, gHSL_L_gradient;
 var gColorsample, gColortext;
 
-function _setHSLdata(aIgnore) {
-    var h = gHSL_H_slider.value;
-    var s = gHSL_S_slider.value;
-    var l = gHSL_L_slider.value;
+function _setHSLdata(h, s, l, ignore) {
+    if (h === undefined || h === null) {
+        h = gHSL_H_slider.value;
+    } else {
+        gHSL_H_slider.value = h;
+    }
+    if (s === undefined || s === null) {
+        s = gHSL_S_slider.value;
+    } else {
+        gHSL_S_slider.value = s;
+    }
+    if (l === undefined || l === null) {
+        l = gHSL_L_slider.value;
+    } else {
+        gHSL_L_slider.value = l;
+    }
+    if (ignore === undefined || ignore === null)
+        ignore = {};
     
-    if (! ('h' in aIgnore)) {
+    if (! ('h' in ignore)) {
         gHSL_H_gradient.style.backgroundImage =
             'linear-gradient(to right, ' +
             'hsl(0, ' + s + '%, ' + l + '%), ' +
@@ -1082,7 +1102,7 @@ function _setHSLdata(aIgnore) {
             ')';
     }
     
-    if (! ('s' in aIgnore)) {
+    if (! ('s' in ignore)) {
         gHSL_S_gradient.style.backgroundImage =
             'linear-gradient(to right, ' +
             'hsl(' + h + ', 0%, ' + l + '%), ' +
@@ -1090,7 +1110,7 @@ function _setHSLdata(aIgnore) {
             ')';
     }
     
-    if (! ('l' in aIgnore)) {
+    if (! ('l' in ignore)) {
         gHSL_L_gradient.style.backgroundImage =
             'linear-gradient(to right, ' +
             'hsl(' + h + ', ' + s + '%, 0%), ' +
@@ -1110,15 +1130,15 @@ function _setHSLdata(aIgnore) {
 }
 
 function setHSL_hue() {
-    _setHSLdata({h: true});
+    _setHSLdata(null, null, null, {h: true});
 }
 
 function setHSL_saturation() {
-    _setHSLdata({s: true});
+    _setHSLdata(null, null, null, {s: true});
 }
 
 function setHSL_lightness() {
-    _setHSLdata({l: true});
+    _setHSLdata(null, null, null, {l: true});
 }
 
 function init() {
@@ -1205,6 +1225,20 @@ function init() {
             var cmd = this.getAttribute('data-cmd');
             if (cmd)
                 sendCommand(cmd + this.value);
+        });
+    });
+    
+    $$('.color-bt').forEach(function(elt) {
+        elt.addEventListener('click', function(evt) {
+            var color = this.getAttribute("data-color");
+            if (!color)
+                return;
+            
+            var re = /^\s*hsl\(\s*([\d]{1,3})\s*,\s*([\d]{1,3})%\s*,\s*([\d]{1,3})%\s*\)\s*/i;
+            var res = re.exec(color);
+            if (res) {
+                _setHSLdata(res[1], res[2], res[3]);
+            }
         });
     });
     

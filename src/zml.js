@@ -171,12 +171,26 @@ var gHSL_H_slider, gHSL_S_slider, gHSL_L_slider;
 var gHSL_H_gradient, gHSL_S_gradient, gHSL_L_gradient;
 var gColorsample, gColortext;
 
-function _setHSLdata(aIgnore) {
-    var h = gHSL_H_slider.value;
-    var s = gHSL_S_slider.value;
-    var l = gHSL_L_slider.value;
+function _setHSLdata(h, s, l, ignore) {
+    if (h === undefined || h === null) {
+        h = gHSL_H_slider.value;
+    } else {
+        gHSL_H_slider.value = h;
+    }
+    if (s === undefined || s === null) {
+        s = gHSL_S_slider.value;
+    } else {
+        gHSL_S_slider.value = s;
+    }
+    if (l === undefined || l === null) {
+        l = gHSL_L_slider.value;
+    } else {
+        gHSL_L_slider.value = l;
+    }
+    if (ignore === undefined || ignore === null)
+        ignore = {};
     
-    if (! ('h' in aIgnore)) {
+    if (! ('h' in ignore)) {
         gHSL_H_gradient.style.backgroundImage =
             'linear-gradient(to right, ' +
             'hsl(0, ' + s + '%, ' + l + '%), ' +
@@ -189,7 +203,7 @@ function _setHSLdata(aIgnore) {
             ')';
     }
     
-    if (! ('s' in aIgnore)) {
+    if (! ('s' in ignore)) {
         gHSL_S_gradient.style.backgroundImage =
             'linear-gradient(to right, ' +
             'hsl(' + h + ', 0%, ' + l + '%), ' +
@@ -197,7 +211,7 @@ function _setHSLdata(aIgnore) {
             ')';
     }
     
-    if (! ('l' in aIgnore)) {
+    if (! ('l' in ignore)) {
         gHSL_L_gradient.style.backgroundImage =
             'linear-gradient(to right, ' +
             'hsl(' + h + ', ' + s + '%, 0%), ' +
@@ -217,15 +231,15 @@ function _setHSLdata(aIgnore) {
 }
 
 function setHSL_hue() {
-    _setHSLdata({h: true});
+    _setHSLdata(null, null, null, {h: true});
 }
 
 function setHSL_saturation() {
-    _setHSLdata({s: true});
+    _setHSLdata(null, null, null, {s: true});
 }
 
 function setHSL_lightness() {
-    _setHSLdata({l: true});
+    _setHSLdata(null, null, null, {l: true});
 }
 
 function init() {
@@ -312,6 +326,20 @@ function init() {
             var cmd = this.getAttribute('data-cmd');
             if (cmd)
                 sendCommand(cmd + this.value);
+        });
+    });
+    
+    $$('.color-bt').forEach(function(elt) {
+        elt.addEventListener('click', function(evt) {
+            var color = this.getAttribute("data-color");
+            if (!color)
+                return;
+            
+            var re = /^\s*hsl\(\s*([\d]{1,3})\s*,\s*([\d]{1,3})%\s*,\s*([\d]{1,3})%\s*\)\s*/i;
+            var res = re.exec(color);
+            if (res) {
+                _setHSLdata(res[1], res[2], res[3]);
+            }
         });
     });
     
