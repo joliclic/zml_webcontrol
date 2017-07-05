@@ -2,13 +2,18 @@
 
 var gServers = [
     {
-        name: 'FoxyNico',
-        //url: 'ws:/192.168.2.37:81',
-        //url: 'ws:/192.168.0.42:81',
-        url: 'ws:/192.168.2.3:81',
-        //url: 'ws:/192.168.0.21:81',
+        name: 'Bird',
+        url: 'ws:/192.168.2.10:81',
         websocket: null,
     },
+    //{
+    //    name: 'FoxyNico',
+    //    //url: 'ws:/192.168.2.37:81',
+    //    //url: 'ws:/192.168.0.42:81',
+    //    url: 'ws:/192.168.2.2:81',
+    //    //url: 'ws:/192.168.0.21:81',
+    //    websocket: null,
+    //},
 ];
 
 function $(expr) {
