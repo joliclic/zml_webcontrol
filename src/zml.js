@@ -2,9 +2,10 @@
 
 var gServers = [
     {
-        name: 'PifLeChien',
+        name: 'FoxyNico',
         //url: 'ws:/192.168.2.37:81',
-        url: 'ws:/192.168.0.42:81',
+        //url: 'ws:/192.168.0.42:81',
+        url: 'ws:/192.168.2.3:81',
         //url: 'ws:/192.168.0.21:81',
         websocket: null,
     },

@@ -771,6 +771,11 @@ big.status-txt {
         <h3>commandes&nbsp;:</h3>
         
         <div class="cmd-boxes">
+            <div class="cmd-box">
+                <button class="cmd-bt" data-cmd="continuous">
+                    Plein feu
+                </button>
+            </div>
             <div class="cmd-box cmd-slidebox">
                 <button class="cmd-bt" data-cmd="blink">
                     Clignoter
@@ -797,10 +802,16 @@ big.status-txt {
                 </button>
             </div>
             <div class="cmd-box">
+                <button class="cmd-bt" data-cmd="heart">
+                    <span>♥</span>
+                    Cœur
+                </button>
+            </div>
+            <div class="cmd-box">
                 <button class="cmd-bt big-bt" data-cmd="blackout">
-                    <span>⏹</span>
+                    <span>⏹✖</span>
                     Éteindre
-                    <span>⏹</span>
+                    <span>⏹✖</span>
                 </button>
             </div>
             <br>
@@ -901,9 +912,10 @@ big.status-txt {
 
 var gServers = [
     {
-        name: 'PifLeChien',
+        name: 'FoxyNico',
         //url: 'ws:/192.168.2.37:81',
-        url: 'ws:/192.168.0.42:81',
+        //url: 'ws:/192.168.0.42:81',
+        url: 'ws:/192.168.2.3:81',
         //url: 'ws:/192.168.0.21:81',
         websocket: null,
     },
