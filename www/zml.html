@@ -783,7 +783,7 @@ big.status-txt {
                 <label>
                     <small>Vitesse&nbsp;:</small>
                     <input class="cmd-slider" type="range" data-cmd="blinkspeed:"
-                           min="0" max="20" step="1" value="5">
+                           min="2" max="24" step="1" value="10">
                 </label>
             </div>
             <div class="cmd-box cmd-slidebox">
@@ -793,7 +793,7 @@ big.status-txt {
                 <label>
                     <small>Vitesse&nbsp;:</small>
                     <input class="cmd-slider" type="range" data-cmd="chasespeed:"
-                           min="0" max="50" step="1" value="20">
+                           min="1" max="50" step="1" value="20">
                 </label>
             </div>
             <div class="cmd-box cmd-slidebox">
@@ -803,7 +803,7 @@ big.status-txt {
                 <label>
                     <small>Vitesse&nbsp;:</small>
                     <input class="cmd-slider" type="range" data-cmd="dchsespeed:"
-                           min="0" max="50" step="1" value="20">
+                           min="1" max="50" step="1" value="20">
                 </label>
             </div>
             <div class="cmd-box cmd-slidebox">
@@ -926,14 +926,14 @@ var gServers = [
         url: 'ws:/192.168.2.10:81',
         websocket: null,
     },
-    {
-        name: 'FoxyNico',
-        //url: 'ws:/192.168.2.37:81',
-        //url: 'ws:/192.168.0.42:81',
-        url: 'ws:/192.168.2.2:81',
-        //url: 'ws:/192.168.0.21:81',
-        websocket: null,
-    },
+    //{
+    //    name: 'FoxyNico',
+    //    //url: 'ws:/192.168.2.37:81',
+    //    //url: 'ws:/192.168.0.42:81',
+    //    url: 'ws:/192.168.2.2:81',
+    //    //url: 'ws:/192.168.0.21:81',
+    //    websocket: null,
+    //},
 ];
 
 function $(expr) {
