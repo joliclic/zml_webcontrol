@@ -801,17 +801,22 @@ big.status-txt {
                     Aller-retour
                 </button>
             </div>
-            <div class="cmd-box">
+            <div class="cmd-box cmd-slidebox">
                 <button class="cmd-bt" data-cmd="heart">
                     <span>♥</span>
                     Cœur
                 </button>
+                <label>
+                    <small>Vitesse&nbsp;:</small>
+                    <input class="cmd-slider" type="range" data-cmd="heartspeed:"
+                           min="-10" max="-1" step="1" value="-4">
+                </label>
             </div>
             <div class="cmd-box">
                 <button class="cmd-bt big-bt" data-cmd="blackout">
-                    <span>⏹✖</span>
+                    <span>✖</span>
                     Éteindre
-                    <span>⏹✖</span>
+                    <span>✖</span>
                 </button>
             </div>
             <br>
