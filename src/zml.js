@@ -6,14 +6,47 @@ var gServers = [
         url: 'ws:/192.168.2.10:81',
         websocket: null,
     },
-    //{
-    //    name: 'FoxyNico',
-    //    //url: 'ws:/192.168.2.37:81',
-    //    //url: 'ws:/192.168.0.42:81',
-    //    url: 'ws:/192.168.2.2:81',
-    //    //url: 'ws:/192.168.0.21:81',
-    //    websocket: null,
-    //},
+    {
+        name: 'Sorcerer',
+        url: 'ws:/192.168.2.11:81',
+        websocket: null,
+    },
+    {
+        name: 'SkullyBeno',
+        url: 'ws:/192.168.2.12:81',
+        websocket: null,
+    },
+    {
+        name: 'FoxyNico',
+        //url: 'ws:/192.168.0.42:81',
+        url: 'ws:/192.168.2.13:81',
+        websocket: null,
+    },
+    {
+        name: 'FilouDevil',
+        url: 'ws:/192.168.2.14:81',
+        websocket: null,
+    },
+    {
+        name: 'Jaguar',
+        url: 'ws:/192.168.2.15:81',
+        websocket: null,
+    },
+    {
+        name: 'DancySkull',
+        url: 'ws:/192.168.2.16:81',
+        websocket: null,
+    },
+    {
+        name: 'DedeBiabolo',
+        url: 'ws:/192.168.2.17:81',
+        websocket: null,
+    },
+    {
+        name: 'JoParrot',
+        url: 'ws:/192.168.2.18:81',
+        websocket: null,
+    },
 ];
 
 function $(expr) {
