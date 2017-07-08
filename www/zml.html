@@ -1280,8 +1280,8 @@ function init() {
     
     $$('.cmd-slider').forEach(function(elt) {
         // perhaps the 'input' event occurs too often, some tests should be tried...
-        elt.addEventListener('input', function(evt) {
-        //elt.addEventListener('change', function(evt) {
+        //elt.addEventListener('input', function(evt) {
+        elt.addEventListener('change', function(evt) {
             var cmd = this.getAttribute('data-cmd');
             if (cmd)
                 sendCommand(cmd + this.value);
@@ -1311,12 +1311,12 @@ function init() {
     gColorsample = $('#colorsample');
     gColortext = $('#colortext');
     
-    //gHSL_H_slider.addEventListener('change', setHSL_hue);
-    //gHSL_S_slider.addEventListener('change', setHSL_saturation);
-    //gHSL_L_slider.addEventListener('change', setHSL_lightness);
-    gHSL_H_slider.addEventListener('input', setHSL_hue);
-    gHSL_S_slider.addEventListener('input', setHSL_saturation);
-    gHSL_L_slider.addEventListener('input', setHSL_lightness);
+    gHSL_H_slider.addEventListener('change', setHSL_hue);
+    gHSL_S_slider.addEventListener('change', setHSL_saturation);
+    gHSL_L_slider.addEventListener('change', setHSL_lightness);
+    //gHSL_H_slider.addEventListener('input', setHSL_hue);
+    //gHSL_S_slider.addEventListener('input', setHSL_saturation);
+    //gHSL_L_slider.addEventListener('input', setHSL_lightness);
     
     setInterval(function() {updateStatus}, 1000);
 }
