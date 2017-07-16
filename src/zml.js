@@ -57,12 +57,12 @@ function $$(expr) {
     return Array.from(document.querySelectorAll(expr));
 }
 
-function sendCommand(str) {
+function sendCommand(str, forceToAll) {
     gServers.forEach(function(server) {
-        if (server.websocket && server.websocket.readyState == WebSocket.OPEN
-            && server.checkbox && server.checkbox.checked
-            ) {
-            server.websocket.send(str)
+        if (server.websocket && server.websocket.readyState == WebSocket.OPEN) {
+            if (forceToAll || (server.checkbox && server.checkbox.checked)) {
+                server.websocket.send(str)
+            }
         } else {
             updateStatus();
         }
@@ -389,8 +389,13 @@ function init() {
     $$('.cmd-bt').forEach(function(elt) {
         elt.addEventListener('click', function(evt) {
             var cmd = this.getAttribute('data-cmd');
-            if (cmd)
-                sendCommand(cmd);
+            if (cmd) {
+                if (this.hasAttribute('data-cmd-all')) {
+                    sendCommand(cmd, true);
+                } else {
+                    sendCommand(cmd);
+                }
+            }
         });
     });
     
