@@ -612,6 +612,10 @@ big.status-txt {
 .status-alert[href]:focus {
   background-color: #c9302c;
 }
+.status-cbox {
+  vertical-align: middle;
+  margin-left: 1em;
+}
 #responses-textarea {
   width: 100%;
   max-width: 50em;
@@ -751,7 +755,13 @@ big.status-txt {
                 <span class="sr-only">voir</span>
             </button>
             <div id="main-status-box"></div>
-            <div id="substatus-box"></div>
+            <div id="substatus-block">
+                <div id="substatus-box"></div>
+                <div id="substatus-tools">
+                    <button id="select-all-masks-bt">Tous</button>
+                    <button id="unselect-all-masks-bt">Aucun</button>
+                </div>
+            </div>
         </div>
     </section>
     
@@ -924,48 +934,48 @@ var gServers = [
     {
         name: 'Bird',
         url: 'ws:/192.168.2.10:81',
-        websocket: null,
+        //websocket: null,
     },
     {
         name: 'Sorcerer',
         url: 'ws:/192.168.2.11:81',
-        websocket: null,
+        //websocket: null,
     },
     {
         name: 'SkullyBeno',
         url: 'ws:/192.168.2.12:81',
-        websocket: null,
+        //websocket: null,
     },
     {
         name: 'FoxyNico',
         //url: 'ws:/192.168.0.42:81',
         url: 'ws:/192.168.2.13:81',
-        websocket: null,
+        //websocket: null,
     },
     {
         name: 'FilouDevil',
         url: 'ws:/192.168.2.14:81',
-        websocket: null,
+        //websocket: null,
     },
     {
         name: 'Jaguar',
         url: 'ws:/192.168.2.15:81',
-        websocket: null,
+        //websocket: null,
     },
     {
         name: 'DancySkull',
         url: 'ws:/192.168.2.16:81',
-        websocket: null,
+        //websocket: null,
     },
     {
         name: 'DedeBiabolo',
         url: 'ws:/192.168.2.17:81',
-        websocket: null,
+        //websocket: null,
     },
     {
         name: 'JoParrot',
         url: 'ws:/192.168.2.18:81',
-        websocket: null,
+        //websocket: null,
     },
 ];
 
@@ -979,7 +989,9 @@ function $$(expr) {
 
 function sendCommand(str) {
     gServers.forEach(function(server) {
-        if (server.websocket && server.websocket.readyState == WebSocket.OPEN) {
+        if (server.websocket && server.websocket.readyState == WebSocket.OPEN
+            && server.checkbox && server.checkbox.checked
+            ) {
             server.websocket.send(str)
         } else {
             updateStatus();
@@ -995,14 +1007,18 @@ function updateStatus() {
         if (server.websocket && server.websocket.readyState == WebSocket.OPEN) {
             nb_servers_ok++;
             if (server.status_box) {
-                server.status_box.innerHTML =
-                    server.name + ' : ' +
-                    '<span class="status-txt status-ok">OK</span>';
+                //server.status_box.innerHTML =
+                //    server.name + ' : ' +
+                //    '<span class="status-txt status-ok">OK</span>';
+                server.status_box.className = 'status-txt status-ok';
+                server.status_box.innerHTML = 'OK';
             }
         } else if (server.status_box) {
             server.status_box.innerHTML =
-                server.name + ' : ' +
-                '<span class="status-txt status-alert">KO</span>';
+                //server.name + ' : ' +
+                //'<span class="status-txt status-alert">KO</span>';
+                server.status_box.className = 'status-txt status-alert';
+                server.status_box.innerHTML = 'KO';
         }
     });
     
@@ -1220,13 +1236,30 @@ function init() {
         }
     });
     
+    var substatus_block = $('#substatus-block');
+    substatus_block.style.display = 'none';
     var substatus_box = $('#substatus-box');
-    substatus_box.style.display = 'none';
     gServers.forEach(function(server) {
         if (substatus_box) {
-            server.status_box = document.createElement('div');
-            server.status_box.className = 'substatus';
-            substatus_box.appendChild(server.status_box);
+            server.status_block = document.createElement('div');
+            server.status_block.className = 'substatus';
+            server.status_block.innerHTML = server.name + ' : ';
+            server.status_box = document.createElement('span');
+            server.status_box.className = 'status-txt status-alert';
+            server.status_box.innerHTML = 'KO';
+            server.status_block.appendChild(server.status_box);
+            server.checkbox = document.createElement('input');
+            server.checkbox.type = 'checkbox';
+            server.checkbox.checked = true;
+            server.checkbox.className = 'status-cbox';
+            server.status_block.appendChild(server.checkbox);
+            substatus_box.appendChild(server.status_block);
+            
+            server.status_block.addEventListener('click', function(e) {
+                if (e.target.nodeName && e.target.nodeName == 'INPUT')
+                    return;
+                server.checkbox.checked = !server.checkbox.checked;
+            });
         }
         server.websocket = new WebSocket(server.url);
         server.websocket.addEventListener('open', function (evt) {
@@ -1243,17 +1276,30 @@ function init() {
         });
     });
     
+    $('#select-all-masks-bt').addEventListener('click', function() {
+        gServers.forEach(function(server) {
+            server.checkbox.checked = true;
+        });
+    });
+    
+    $('#unselect-all-masks-bt').addEventListener('click', function() {
+        gServers.forEach(function(server) {
+            server.checkbox.checked = false;
+        });
+    });
+    
     var stati_bt = $('#stati-bt');
     if (substatus_box.children.length < 2)
         stati_bt.style.display = 'none';
     stati_bt.addEventListener('click', function(e) {
-        var substatus_box = $('#substatus-box');
+        //var substatus_box = $('#substatus-box');
+        var substatus_block = $('#substatus-block');
         var icon = $('#stati-bt-icon');
-        if (substatus_box.style.display == 'none') {
-            substatus_box.style.display = '';
+        if (substatus_block.style.display == 'none') {
+            substatus_block.style.display = '';
             icon.innerHTML = '▲';
         } else {
-            substatus_box.style.display = 'none';
+            substatus_block.style.display = 'none';
             icon.innerHTML = '▼';
         }
     });
