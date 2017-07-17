@@ -669,7 +669,6 @@ big.status-txt {
   margin-bottom: 0.4em;
   margin-right: 0.2em;
 }
-.cmb-bt-colorbox,
 .color-bt-cbox {
   display: inline-block;
   width: 2em;
@@ -698,6 +697,43 @@ big.status-txt {
 }
 .bgled-blue {
   background-color: #2f9dff;
+}
+.bkcolor-bt-cbox {
+  display: inline-block;
+  vertical-align: bottom;
+  width: 0;
+  height: 0;
+  border: 1em solid black;
+  border-top-width: 0.7em;
+  border-bottom-width: 0.7em;
+}
+.bkled-white {
+  border-right-color: #ccc;
+  border-bottom-color: #ccc;
+}
+.bkled-purple {
+  border-right-color: #a900ff;
+  border-bottom-color: #a900ff;
+}
+.bkled-orange {
+  border-right-color: #ff8200;
+  border-bottom-color: #ff8200;
+}
+.bkled-red {
+  border-right-color: #ff2a2a;
+  border-bottom-color: #ff2a2a;
+}
+.bkled-yellow {
+  border-right-color: #ffff38;
+  border-bottom-color: #ffff38;
+}
+.bkled-green {
+  border-right-color: #7bff2f;
+  border-bottom-color: #7bff2f;
+}
+.bkled-blue {
+  border-right-color: #2f9dff;
+  border-bottom-color: #2f9dff;
 }
 #hsl-selector-box {
   margin-top: 2em;
@@ -917,6 +953,44 @@ big.status-txt {
                 </div>
             </div>
         </div>
+        
+        <br>
+        <div class="cmd-boxes">
+            <div class="cmd-box">
+                <button class="color-bt" data-color="hsl(0, 0%, 0%)">
+                    <span class="sr-only">Blanc</span>
+                    <span class="bkcolor-bt-cbox bkled-white"></span>
+                </button>
+                <button class="color-bt" data-color="hsl(0, 100%, 0%)">
+                    <span class="sr-only">Rouge</span>
+                    <span class="bkcolor-bt-cbox bkled-red"></span>
+                </button>
+                <button class="color-bt" data-color="hsl(31, 100%, 0%)">
+                    <span class="sr-only">Orange</span>
+                    <span class="bkcolor-bt-cbox bkled-orange"></span>
+                </button>
+                <button class="color-bt" data-color="hsl(60, 100%, 0%)">
+                    <span class="sr-only">Jaune</span>
+                    <span class="bkcolor-bt-cbox bkled-yellow"></span>
+                </button>
+                <button class="color-bt" data-color="hsl(98, 100%, 0%)">
+                    <span class="sr-only">Vert</span>
+                    <span class="bkcolor-bt-cbox bkled-green"></span>
+                </button>
+                <button class="color-bt" data-color="hsl(208, 100%, 0%)">
+                    <span class="sr-only">Bleu</span>
+                    <span class="bkcolor-bt-cbox bkled-blue"></span>
+                </button>
+                <button class="color-bt" data-color="hsl(280, 100%, 0%)">
+                    <span class="sr-only">Violet</span>
+                    <span class="bkcolor-bt-cbox bkled-purple"></span>
+                </button>
+            </div>
+        </div>
+
+
+
+
         
         <div id="mutable-cmd-box">
             <label for="mutable-cmd-input">commande libre&nbsp;:</label>
