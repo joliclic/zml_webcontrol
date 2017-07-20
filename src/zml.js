@@ -52,7 +52,17 @@ function $$(expr) {
     return Array.from(document.querySelectorAll(expr));
 }
 
+var CMD_DELAY = 100; // ms
+
+var gLastCommandTime = 0;
+
 function sendCommand(str, forceToAll) {
+    var now = Date.now();
+    if (now - gLastCommandTime < CMD_DELAY) {
+        return;
+    }
+    gLastCommandTime = now;
+    
     gServers.forEach(function(server) {
         if (server.websocket && server.websocket.readyState == WebSocket.OPEN) {
             if (forceToAll || (server.checkbox && server.checkbox.checked)) {
