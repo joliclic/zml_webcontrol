@@ -38,10 +38,10 @@ var gServers = [
         name: 'Danseur BBoy', // DancySkull
         url: 'ws:/192.168.2.16:81'
     },
-    //{
-    //    name: 'Mini Stuff', // DancySkull
-    //    url: 'ws:/192.168.2.19:81'
-    //},
+    {
+        name: 'Bâton', // MiniJag
+        url: 'ws:/192.168.2.19:81'
+    },
 ];
 
 function $(expr) {
