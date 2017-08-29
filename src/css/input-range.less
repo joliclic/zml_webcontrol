@@ -138,7 +138,7 @@ input[type=range] {
     // for an equilateral trinagle:
     // border-bottom-width = 0.866 * border-left-width + border-right-width 
     //border-width: 0 10px 17.3px 10px;
-    border-width: 17.3px 10px 17.3px 10px;
+    border-width: 20px 12px 20px 12px;
     border-color: transparent #000 #fff #000;
 }
 
@@ -175,10 +175,12 @@ input[type=range].colorslider {
 
   &::-moz-range-track {
     //.track();
+
     //.shadow(@track-shadow-size,@track-shadow-blur,@track-shadow-color);
     //background: @track-color;
     //border-radius: @track-radius;
     //border: @track-border-width solid @track-border-color;
+    .shadow(0, 0, transparent);
     background: transparent;
     border: none;
   }
