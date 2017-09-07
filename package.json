@@ -12,6 +12,8 @@
   "private": true,
   "devDependencies": {
     "fs-extra": "^3.0.1",
-    "less": "^2.7.2"
+    "less": "^2.7.2",
+    "node-expat": "^2.3.16",
+    "properties-parser": "^0.3.1"
   }
 }

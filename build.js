@@ -8,6 +8,7 @@ var fs = require('fs');
 //var util = require('util');
 //var Mold = require('./nodelibs/mold');
 var less = require('less');
+var l10n = require('./nodelibs/l10n');
 
 var cfg = {
     compressCSS: false,
@@ -15,6 +16,8 @@ var cfg = {
     src_dir: path.join('.', 'src'),
     
     src_css_dir: path.join('.', 'src', 'css'),
+    
+    src_l10n_dir: path.join('.', 'src', 'l10n'),
     
     target_dir: path.join('.', 'www'),
 };
@@ -73,6 +76,26 @@ html = html.replace(/^\s*(\/\*)?\s*@@_STYLES_@@\s*(\*\/)?/m, styles);
 // the js can content special pattern used by String.prototype.replace, like
 // '$$'. The solution is to use a function as replacement.
 html = html.replace(/^\s*(\/\/)?\s*@@_JS_@@\s*/m, function(){ return js});
-var htmlDestFile = path.join(cfg.target_dir, 'zml.html');
 
-fs.writeFileSync(htmlDestFile, html, {encoding: 'utf8'});
+fs.readdirSync(cfg.src_l10n_dir).forEach(file => {
+    var lang = file;
+    var langdir = path.join(cfg.src_l10n_dir, lang);
+    if (!fs.lstatSync(langdir).isDirectory())
+        return;
+    
+    var dictFile = path.join(langdir, 'zml.properties');
+    if (!fs.existsSync(dictFile))
+        return;
+    
+    var dict = l10n.getPropertiesFromFileSync(dictFile);
+    if (!dict) {
+        console.log('failed to parse the ' + lang + ' properties file !');
+        return;
+    }
+    
+    var localized = l10n.localize(html, dict, '\\{\\{\\s*', '\\s*\\}\\}');
+    var htmlDestFile = path.join(cfg.target_dir, 'zml_' + lang + '.html');
+    fs.writeFileSync(htmlDestFile, localized, {encoding: 'utf8'});
+    
+    console.log('zml_' + lang + '.html generated');
+})
