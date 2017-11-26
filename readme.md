@@ -24,7 +24,7 @@ The other parts are:
 What is ZYGOS MASKS LIGHTS ?
 ----------------------------
 
-The [Zygos Brass Band](http://zygos.fr)  uses for its show named "Trybz" masks made with polypropylene sheet cutted with laser (original plans by Wintercroft). This project add some leds (WS8266 plugged into a Nodemcu card) inside them, and control them with a tablet/smartphone over a wifi network via WebSocket.
+The [Zygos Brass Band](http://zygos.fr)  uses for its show named "Trybz" masks made with polypropylene sheet cutted with laser (original plans by Wintercroft). This project add some leds (WS8266 plugged into a NodeMCU card) inside them, and control them with a tablet/smartphone over a wifi network via WebSocket.
 
 
 Organisation of this code
@@ -45,7 +45,7 @@ The `zml.properties` is a [`.properties`](https://en.wikipedia.org/wiki/.propert
 Dependencies
 ------------
 
-You need [Node.js](https://nodejs.org) to generate the ino files. And install the node depencies for this project (`npm install` from the main folder).
+You need [Node.js](https://nodejs.org) to generate the HTML files. And install the node dependencies for this project (`npm install` from the main folder).
 
 `node build.js` will generate localized version of the html page in the `www` directory.
 
