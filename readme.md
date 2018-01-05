@@ -62,3 +62,15 @@ then open `zml_en.html`
 
 
 All the code is under the MIT license.
+
+screenshot of the control /page:
+
+![screenshot](media/screenshot.png)
+
+link to a demonstration video:
+
+[![link to a demonstration video](https://i.ytimg.com/vi/-qXGG1oTjpg/hqdefault.jpg)](https://youtu.be/-qXGG1oTjpg "Zygos Mask Lights video link")
+
+photos:
+
+![photo 1](media/340px-zygos_mask_1.jpeg)
