@@ -61,7 +61,13 @@ You can copy the HTML page on a android device, for example in a `myfolder` dire
 then open `zml_en.html`
 
 
+License
+-------
+
 All the code is under the MIT license.
+
+
+---
 
 screenshot of the control /page:
 
