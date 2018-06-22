@@ -33,7 +33,7 @@ Organisation of this code
 The masks and their leds are commanded from a single static web page.
 The different part of this page, JavaScript, CSS, and localisation, are built from a Node.js script.
 
-The JavaScript is a single file in the src folder. You must adapt, in the top of the file, some values of the `gServers` variable, at least the ip of the masks, according to your network.
+There's 2 JavaScript files in the src folder, `zml.js` is the main program, and `config.default.js` contains some settings. You should create a copy of `config.default.js`, and name it `config.js`, the build system will use it rather than the other. And there you must adapt some values of the `gServers` variable, at least the ip of the masks, according to your network.
 
 The CSS are generated from some [`LessCSS`](http://lesscss.org/) files. The main one is `src/css/zml.less` file.
 

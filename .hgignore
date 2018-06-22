@@ -16,6 +16,7 @@ composer.lock
 ^MY_TODO.txt$
 ^MY_NOTES.txt$
 ^my_notes.md$
+^src/config.js$
 
 ^dist/
 

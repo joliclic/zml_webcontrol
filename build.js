@@ -71,11 +71,25 @@ var htmlSrcPath = path.join(cfg.src_dir, 'zml.html');
 var html = fs.readFileSync(htmlSrcPath, 'utf8');
 var jsSrcPath = path.join(cfg.src_dir, 'zml.js');
 var js = fs.readFileSync(jsSrcPath, 'utf8');
+var jsconfig = '';
+var jsconfigSrcPath = path.join(cfg.src_dir, 'config.js');
+if (!fs.existsSync(jsconfigSrcPath)) {
+    console.log('config.js NOT exists');
+    jsconfigSrcPath = path.join(cfg.src_dir, 'config.default.js');
+    if (!fs.existsSync(jsconfigSrcPath)) {
+        throw "Error: no JS config file found!";
+    }
+} else {
+    console.log('config.js exists');
+}
+jsconfig = fs.readFileSync(jsconfigSrcPath, 'utf8') || '';
 
 html = html.replace(/^\s*(\/\*)?\s*@@_STYLES_@@\s*(\*\/)?/m, styles);
 // the js can content special pattern used by String.prototype.replace, like
 // '$$'. The solution is to use a function as replacement.
 html = html.replace(/^\s*(\/\/)?\s*@@_JS_@@\s*/m, function(){ return js});
+html = html.replace(/^\s*(\/\/)?\s*@@_INCLUDE_CONFIG_@@\s*/m,
+                    function(){ return jsconfig});
 
 fs.readdirSync(cfg.src_l10n_dir).forEach(file => {
     var lang = file;
