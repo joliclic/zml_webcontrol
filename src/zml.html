@@ -58,63 +58,63 @@
         
         <div class="cmd-boxes">
             <div class="cmd-box">
-                <button class="cmd-bt" data-cmd="continuous">
+                <button class="cmd-bt" data-cmd="mask:continuous">
                     {{ zml.effect.fulllights }}
                 </button>
             </div>
             <div class="cmd-box cmd-slidebox">
-                <button class="cmd-bt" data-cmd="blink">
+                <button class="cmd-bt" data-cmd="mask:blink">
                     {{ zml.effect.blink }}
                 </button>
                 <label>
                     <small>{{ zml.speed.label }}</small>
-                    <input class="cmd-slider" type="range" data-cmd="blinkspeed:"
+                    <input class="cmd-slider" type="range" data-cmd="mask:blinkspeed:"
                            min="2" max="24" step="1" value="5">
                 </label>
             </div>
             <div class="cmd-box cmd-slidebox">
-                <button class="cmd-bt" data-cmd="chase">
+                <button class="cmd-bt" data-cmd="mask:chase">
                     {{ zml.effect.chase }}
                 </button>
                 <label>
                     <small>{{ zml.speed.label }}</small>
-                    <input class="cmd-slider" type="range" data-cmd="chasespeed:"
+                    <input class="cmd-slider" type="range" data-cmd="mask:chasespeed:"
                            min="1" max="50" step="1" value="12">
                 </label>
             </div>
             <div class="cmd-box cmd-slidebox">
-                <button class="cmd-bt" data-cmd="doublechase">
+                <button class="cmd-bt" data-cmd="mask:doublechase">
                     {{ zml.effect.bounce }}
                 </button>
                 <label>
                     <small>{{ zml.speed.label }}</small>
-                    <input class="cmd-slider" type="range" data-cmd="dchsespeed:"
+                    <input class="cmd-slider" type="range" data-cmd="mask:dchsespeed:"
                            min="1" max="50" step="1" value="12">
                 </label>
             </div>
             <div class="cmd-box cmd-slidebox">
-                <button class="cmd-bt" data-cmd="heart">
+                <button class="cmd-bt" data-cmd="mask:heart">
                     <span>♥</span>
                     {{ zml.effect.heart }}
                 </button>
                 <label>
                     <small>{{ zml.speed.label }}</small>
-                    <input class="cmd-slider" type="range" data-cmd="heartspeed:"
+                    <input class="cmd-slider" type="range" data-cmd="mask:heartspeed:"
                            min="-10" max="-1" step="1" value="-10">
                 </label>
             </div>
             <div class="cmd-box">
-                <button class="cmd-bt" data-cmd="random">
+                <button class="cmd-bt" data-cmd="mask:random">
                     {{ zml.effect.random }}
                 </button>
             </div>
             <div class="cmd-box">
-                <button class="cmd-bt" data-cmd="blackout">
+                <button class="cmd-bt" data-cmd="mask:blackout">
                     {{ zml.effect.blackout }}
                 </button>
             </div>
             <div class="cmd-box">
-                <button class="cmd-bt big-bt" data-cmd="blackout" data-cmd-all="1">
+                <button class="cmd-bt big-bt" data-cmd="mask:blackout" data-cmd-all="1">
                     <span>✖</span>
                     {{ zml.effect.switchoff }}
                     <span>✖</span>

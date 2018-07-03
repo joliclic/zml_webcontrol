@@ -236,7 +236,7 @@ function _setHSLdata(h, s, l, ignore) {
         'rgb(' + rgb.r + ', ' + rgb.g + ', ' + rgb.b + ')' + '<br>' +
         'hsl(' + h + ', ' + s + ', ' + l + ')' + '<br>' +
         hexa;
-    sendCommand('color:' + hexa);
+    sendCommand('mask:color:' + hexa);
 }
 
 function setHSL_hue() {
