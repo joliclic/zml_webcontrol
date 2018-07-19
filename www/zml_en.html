@@ -825,63 +825,63 @@ big.status-txt {
         
         <div class="cmd-boxes">
             <div class="cmd-box">
-                <button class="cmd-bt" data-cmd="continuous">
+                <button class="cmd-bt" data-cmd="mask:continuous">
                     Full lights
                 </button>
             </div>
             <div class="cmd-box cmd-slidebox">
-                <button class="cmd-bt" data-cmd="blink">
+                <button class="cmd-bt" data-cmd="mask:blink">
                     Blink
                 </button>
                 <label>
                     <small>Speed:</small>
-                    <input class="cmd-slider" type="range" data-cmd="blinkspeed:"
-                           min="2" max="24" step="1" value="2">
+                    <input class="cmd-slider" type="range" data-cmd="mask:blinkspeed:"
+                           min="2" max="24" step="1" value="5">
                 </label>
             </div>
             <div class="cmd-box cmd-slidebox">
-                <button class="cmd-bt" data-cmd="chase">
+                <button class="cmd-bt" data-cmd="mask:chase">
                     Chase
                 </button>
                 <label>
                     <small>Speed:</small>
-                    <input class="cmd-slider" type="range" data-cmd="chasespeed:"
-                           min="1" max="50" step="1" value="1">
+                    <input class="cmd-slider" type="range" data-cmd="mask:chasespeed:"
+                           min="1" max="50" step="1" value="12">
                 </label>
             </div>
             <div class="cmd-box cmd-slidebox">
-                <button class="cmd-bt" data-cmd="doublechase">
+                <button class="cmd-bt" data-cmd="mask:doublechase">
                     Bounce
                 </button>
                 <label>
                     <small>Speed:</small>
-                    <input class="cmd-slider" type="range" data-cmd="dchsespeed:"
-                           min="1" max="50" step="1" value="1">
+                    <input class="cmd-slider" type="range" data-cmd="mask:dchsespeed:"
+                           min="1" max="50" step="1" value="12">
                 </label>
             </div>
             <div class="cmd-box cmd-slidebox">
-                <button class="cmd-bt" data-cmd="heart">
+                <button class="cmd-bt" data-cmd="mask:heart">
                     <span>♥</span>
                     Heart
                 </button>
                 <label>
                     <small>Speed:</small>
-                    <input class="cmd-slider" type="range" data-cmd="heartspeed:"
+                    <input class="cmd-slider" type="range" data-cmd="mask:heartspeed:"
                            min="-10" max="-1" step="1" value="-10">
                 </label>
             </div>
             <div class="cmd-box">
-                <button class="cmd-bt" data-cmd="random">
+                <button class="cmd-bt" data-cmd="mask:random">
                     Random
                 </button>
             </div>
             <div class="cmd-box">
-                <button class="cmd-bt" data-cmd="blackout">
+                <button class="cmd-bt" data-cmd="mask:blackout">
                     Blackout
                 </button>
             </div>
             <div class="cmd-box">
-                <button class="cmd-bt big-bt" data-cmd="blackout" data-cmd-all="1">
+                <button class="cmd-bt big-bt" data-cmd="mask:blackout" data-cmd-all="1">
                     <span>✖</span>
                     Switch Off
                     <span>✖</span>
@@ -999,10 +999,13 @@ big.status-txt {
                 </button>
             </div>
         </div>
-
-
-
-
+        <br>
+        <div class="cmd-box">
+            <button class="cmd-bt" data-cmd="mask:flash">
+                <span>⚡</span>
+                Flash
+            </button>
+        </div>
         
         <div id="mutable-cmd-box">
             <label for="mutable-cmd-input">Free command:</label>
@@ -1034,7 +1037,9 @@ gServers = [
     {
         name: 'Sousaphone', // SkullyBeno
 //        url: 'ws:/192.168.2.12:81'
-        url: 'ws:/192.168.0.21:81'
+        //   url: 'ws:/192.168.0.21:81'
+//          url: 'ws:/192.168.0.44:81'
+          url: 'ws:/192.168.0.19:81'
     },
     // {
     //     name: 'Banjo', // FoxyNico
@@ -1299,7 +1304,7 @@ function _setHSLdata(h, s, l, ignore) {
         'rgb(' + rgb.r + ', ' + rgb.g + ', ' + rgb.b + ')' + '<br>' +
         'hsl(' + h + ', ' + s + ', ' + l + ')' + '<br>' +
         hexa;
-    sendCommand('color:' + hexa);
+    sendCommand('mask:color:' + hexa);
 }
 
 function setHSL_hue() {
