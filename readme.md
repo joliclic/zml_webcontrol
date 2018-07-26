@@ -5,7 +5,7 @@ ZML_WEBCONTROL
 
 ### Summary
 
-Control WS2812 leds with a NodeMCU (esp8266 card) connected to a WiFi network, by commands sent by a HTML interface thru WebSockets.
+Control WS2812 leds with a ESP8266 based card (NodeMCU, WeMos D1,...) connected to a WiFi network, by commands sent by a HTML interface thru WebSockets.
 This part concerns the web page to send commands to the masks.
 
 
@@ -24,7 +24,7 @@ The other parts are:
 What is ZYGOS MASKS LIGHTS ?
 ----------------------------
 
-The [Zygos Brass Band](http://zygos.fr)  uses for its show named "Trybz" masks made with polypropylene sheet cutted with laser (original plans by Wintercroft). This project add some leds (WS8266 plugged into a NodeMCU card) inside them, and control them with a tablet/smartphone over a wifi network via WebSocket.
+The [Zygos Brass Band](http://zygos.fr) uses for its show named "Trybz" masks made with polypropylene sheet cutted with laser (original plans by Wintercroft). This project add some leds (WS2812 plugged into a ESP8266 based card, like NodeMCU or WeMos D1) inside them, and control them with a tablet/smartphone over a wifi network via WebSocket.
 
 
 Organisation of this code
@@ -51,7 +51,7 @@ You need [Node.js](https://nodejs.org) to generate the HTML files. And install t
 
 
 How to use it ?
---------------- 
+---------------
 
 You must be connected on then same network with the mask, then simply open the html page in a browser, and try some command.
 
