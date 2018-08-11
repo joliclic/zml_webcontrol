@@ -5,6 +5,8 @@ syntax: regexp
 (^|/)TAGS$
 (^|/)\.DS_Store$
 
+^package-lock.json
+
 \.komodoproject$
 ^.komodotools
 
