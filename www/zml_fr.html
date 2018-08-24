@@ -1017,6 +1017,63 @@ big.status-txt {
         </div>
     </section>
     
+    <hr>
+    <section class="commands-box">
+        <h3>Commandes de panneaux</h3>
+        
+        <div class="cmd-boxes">
+            <div class="cmd-box">
+                <button class="cmd-bt" data-cmd="matrix:fire">
+                    <span>🔥</span>
+                    Feu
+                </button>
+            </div>
+<!--
+    
+            <div class="cmd-box">
+                <button class="cmd-bt" data-cmd="matrix:purplefire">
+                    Feu violet
+                </button>
+            </div>
+-->
+            <div class="cmd-box">
+                <button class="cmd-bt" data-cmd="matrix:fillrandom">
+                    Aléatoire
+                </button>
+            </div>
+            <div class="cmd-box">
+                <button class="cmd-bt" data-cmd="matrix:circles">
+                    Cercles
+                </button>
+            </div>
+            <div class="cmd-box">
+                <button class="cmd-bt" data-cmd="matrix:zigzag">
+                    Zigzag
+                </button>
+            </div>
+<!--
+            <div class="cmd-box">
+                <button class="cmd-bt" data-cmd="matrix:scrolltext">
+                    Texte défilant
+                </button>
+            </div>
+-->
+            <div class="cmd-box">
+                <button class="cmd-bt" data-cmd="matrix:demo">
+                    Démo
+                </button>
+                <button class="cmd-bt" data-cmd="matrix:stopdemo">
+                    Stop démo
+                </button>
+            </div>
+            <div class="cmd-box">
+                <button class="cmd-bt" data-cmd="matrix:blackout">
+                    Noir
+                </button>
+            </div>
+        </div>
+    </section>
+        
     <footer>
     </footer>
     
@@ -1030,6 +1087,10 @@ gServers = [
         name: 'Grosse caisse', // JoParrot
         url: 'ws:/192.168.2.18:81'
     },
+    // {
+    //     name: 'Grosse caisse instru.', // kick drum instrument
+    //     url: 'ws:/192.168.2.9:81'
+    // },
     {
         name: 'Caisse claire', // Bird
         url: 'ws:/192.168.2.10:81'
@@ -1078,6 +1139,14 @@ gServers = [
     //     name: 'Padawan', // test
     //     url: 'ws:/192.168.0.19:81'
     // },
+    {
+        name: 'Chapi', // hat 1, chapi
+        url: 'ws:/192.168.2.7:81'
+    },
+    {
+        name: 'Chapo', // hat 2, chapo
+        url: 'ws:/192.168.2.19:81'
+    },
 ];
 function $(expr) {
     return document.querySelector(expr);
